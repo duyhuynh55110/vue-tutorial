@@ -108,6 +108,7 @@
     $("#pattern-switcher").on('click', function () {
         $("body").toggleClass("bg-pattern");
     });
+    
     $("#patter-close").on('click', function () {
         $(this).hide("slow");
         $("#pattern-switcher").addClass("pattern-remove");

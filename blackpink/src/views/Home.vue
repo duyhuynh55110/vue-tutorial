@@ -1,7 +1,6 @@
 <template>
     <!-- ****** Welcome Post Area Start ****** -->
     <section class="welcome-post-sliders owl-carousel">
-
         <!-- Single Slide -->
         <div class="welcome-single-slide">
             <!-- Post Thumb -->
@@ -81,9 +80,18 @@
                 </a>
             </div>
         </div>
-
     </section>
     <!-- ****** Welcome Area End ****** -->
+
+    <carousel>
+        <img src="https://placeimg.com/200/200/any?1">
+
+        <img src="https://placeimg.com/200/200/any?2">
+
+        <img src="https://placeimg.com/200/200/any?3">
+
+        <img src="https://placeimg.com/200/200/any?4">
+    </carousel>
 
     <!-- Categories Area -->
     <CategoriesArea />
@@ -756,11 +764,15 @@
 </template>
 
 <script>
+    import carousel from "vue-owl-carousel2"
     import CategoriesArea from "../components/Categories/CategoriesArea"
+
     export default {
         name: 'Home',
         components: {
+            carousel,
             CategoriesArea,
         }
     }
+    
 </script>

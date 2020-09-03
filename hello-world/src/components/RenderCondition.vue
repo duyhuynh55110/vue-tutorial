@@ -1,6 +1,9 @@
 <template lang="html">
 
   <section class="render-condition">
+    <h1> Props </h1>
+    <p> Truyền prop vào trong component '{{ title }}'</p>
+
     <h1> v-for </h1>
     <ul v-for="(item, key) in items" :key="key">
         <li @click="clickItem(item)"> {{ item }} </li>
@@ -30,7 +33,7 @@
 
   export default  {
     name: 'render-condition',
-    props: [],
+    props: ['title'],
     mounted () {
 
     },

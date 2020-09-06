@@ -660,7 +660,7 @@ li {
 .single-post h2,
 .single-post h4 {
     margin: 10px 0;
-    color: #232d37;
+    color: #ebebeb;
     -webkit-transition-duration: 500ms;
     transition-duration: 500ms;
     text-transform: capitalize;
@@ -708,10 +708,10 @@ li {
     margin-bottom: 30px;
 }
 
-.list-blog.single-post {
+/* .list-blog.single-post {
     margin-bottom: 30px;
     border-bottom: 1px solid #ebebeb;
-}
+} */
 
 .blog_area .col-12:last-of-type .list-blog.single-post {
     margin-bottom: 0;

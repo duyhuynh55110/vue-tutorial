@@ -1,0 +1,9 @@
+@mixin background-opacity($color, $alpha: 0.7) {
+    background: $color; /* The Fallback */
+    background: rgba($color, $alpha);
+}
+
+@mixin background-linear-gradient($deg, $color1, $color2) {
+    background: $color1; /* The Fallback */
+    background: linear-gradient($deg, $color1, $color2);
+}

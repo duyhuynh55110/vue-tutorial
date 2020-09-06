@@ -1,4 +1,5 @@
 <template>
+    <div>
         <!-- Preloader Start -->
     <div id="preloader">
         <div class="yummy-load"></div>
@@ -105,6 +106,7 @@
         </div>
     </header>
     <!-- ****** Header Area End ****** -->
+    </div>
 </template>
 
 <script>

@@ -10,12 +10,16 @@ h1, h2, h3, h4, h5, h6, p {
     border: unset;
     .top_social_bar > a {
         color: $white_01;
+        &:hover {
+            color: $pink_blackpink;
+        }
     }
 
     .signup-search-area a  {
         color: $white_01;
     }
 }
+
 .header_area, .footer_area {
     .yummy-logo {
         img {
@@ -111,6 +115,10 @@ h4.post-headline {
         a.add-btn {
             border: 1px solid $pink_03;
             color: $pink_03;
+            &:hover {
+                background-color: $pink_02;
+                color: $black_01;
+            }
         }
     }
 } 
@@ -122,6 +130,7 @@ h4.post-headline {
 }
 
 .welcome-single-slide {
+    max-height: 560px;
     .project_title {
         @include background-opacity($pink_blackpink, 0.8);
     }
@@ -137,6 +146,20 @@ h4.post-headline {
     h2, h4 {
         &:hover {
             color: $pink_blackpink;
+        }
+    }
+    .post-author, .post-date, .post-favourite, .post-comments, .post-share {
+        a {
+            &:hover {
+                color: $pink_02;
+            }
+        }
+    }
+
+    .read-more {
+        &:hover {
+            color: $pink_02;
+            border-color: $pink_02;
         }
     }
 }
@@ -158,4 +181,7 @@ h4.post-headline {
 
 #scrollUp { background: $pink_02; }
 
-
+// Responsive
+.navbar-toggler {
+    background-color: $pink_blackpink;
+}

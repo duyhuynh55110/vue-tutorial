@@ -5,6 +5,7 @@
         :nav="false" 
         :dots="false"
         :loop="true" 
+        :autoHeight="true"
         :margin="10">
             <Slider v-for="post in posts" 
                     :key="post.id" 

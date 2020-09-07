@@ -1,7 +1,7 @@
 <template>
     <div class="welcome-single-slide">
         <!-- Post Thumb -->
-        <img :src="post.img" :alt="post.image">
+        <img :src="post.img" :alt="post.img">
         
         <!-- Overlay Text -->
         <div class="project_title">

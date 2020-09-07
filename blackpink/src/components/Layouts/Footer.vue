@@ -50,7 +50,7 @@
                     <div class="col-12">
                         <!-- Copywrite Text -->
                         <div class="copy_right_text text-center">
-                            <p>Copyright @2018 All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a></p>
+                            <p>Copyright @2018 All rights reserved | This template is made by John Huynh </p>
                         </div>
                     </div>
                 </div>

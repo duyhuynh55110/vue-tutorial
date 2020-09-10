@@ -3,7 +3,7 @@
         <div :class="flexClass" :data-wow-delay="delayTime">
              <!-- Post Thumb -->
                 <div class="post-thumb">
-                    <img :src="post.img" alt="">
+                    <img :src="post.image" alt="">
                 </div>
                 
                 <!-- Post Content -->
@@ -38,7 +38,7 @@
                     <a href="#">
                         <h2 class="post-headline"> {{ post.title }} </h2>
                     </a>
-                    <p>{{ post.sub_desc }} </p>
+                    <p>{{ post.slug }} </p>
                     <a href="#" class="read-more"> Continue Reading.. </a>
                 </div>
         </div>

@@ -264,9 +264,10 @@
                     </div>
                 </div>
             </div>
-        </section>
+    </section>
 </template>
 <script>
+    import { mapState } from "vuex"
     import Post from './Post'
 
     export default {
@@ -274,60 +275,13 @@
         components: {
             Post
         },
-        data () {
-            return {
-                posts: [
-                    {
-                        id: 1,
-                        title: "Blackpink in your area",
-                        img: "https://kenh14cdn.com/2020/9/2/2008281807-blackpink-selena-gomez-deliver-sweet-collab-icehires-1598687246015136077098-15990212266391487655553.jpg",
-                        created_at: "2020-07-09",
-                        sub_desc: "Sub description",
-                    },
-                    {
-                        id: 1232,
-                        title: "Blackpink in your area",
-                        img: "https://kenh14cdn.com/2020/9/2/2008281807-blackpink-selena-gomez-deliver-sweet-collab-icehires-1598687246015136077098-15990212266391487655553.jpg",
-                        created_at: "2020-07-09",
-                        sub_desc: "Sub description",
-                    },
-                    {
-                        id: 2,
-                        title: "Blackpink in your area",
-                        img: "https://kenh14cdn.com/2020/9/2/2008281807-blackpink-selena-gomez-deliver-sweet-collab-icehires-1598687246015136077098-15990212266391487655553.jpg",
-                        created_at: "2020-07-09",
-                        sub_desc: "Sub description",
-                    },
-                    {
-                        id: 3,
-                        title: "Blackpink in your area",
-                        img: "https://kenh14cdn.com/2020/9/2/2008281807-blackpink-selena-gomez-deliver-sweet-collab-icehires-1598687246015136077098-15990212266391487655553.jpg",
-                        created_at: "2020-07-09",
-                        sub_desc: "Sub description",
-                    },
-                    {
-                        id: 4,
-                        title: "Blackpink in your area",
-                        img: "https://kenh14cdn.com/2020/9/2/2008281807-blackpink-selena-gomez-deliver-sweet-collab-icehires-1598687246015136077098-15990212266391487655553.jpg",
-                        created_at: "2020-07-09",
-                        sub_desc: "Sub description",
-                    },
-                    {
-                        id: 5,
-                        title: "Blackpink in your area",
-                        img: "https://kenh14cdn.com/2020/9/2/2008281807-blackpink-selena-gomez-deliver-sweet-collab-icehires-1598687246015136077098-15990212266391487655553.jpg",
-                        created_at: "2020-07-09",
-                        sub_desc: "Sub description",
-                    },
-                     {
-                        id: 6,
-                        title: "Blackpink in your area",
-                        img: "https://kenh14cdn.com/2020/9/2/2008281807-blackpink-selena-gomez-deliver-sweet-collab-icehires-1598687246015136077098-15990212266391487655553.jpg",
-                        created_at: "2020-07-09",
-                        sub_desc: "Sub description",
-                    },
-                ],
-            }
+        computed: {
+            ...mapState([
+                'posts',
+            ])
+        },
+        mounted() {
+            this.$store.dispatch('loadPosts');
         }
     }
 </script>

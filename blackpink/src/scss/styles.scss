@@ -1,33 +1,19 @@
 @import "./_var.scss";
 @import "./_mixin.scss";
 
-h1, h2, h3, h4, h5, h6, p {
-    color: $white_01;
-}
-
-// Header
-.top_header_area {
-    border: unset;
-    .top_social_bar > a {
-        color: $white_01;
-        &:hover {
-            color: $pink_blackpink;
-        }
+.instagram_gallery_item {
+    height: 189px;
+    img {
+        min-height: 100%;
+        min-width: 100%;
+        /* IE 8 */
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+        /* IE 5-7 */
+        filter: alpha(opacity=0);
+        /* modern browsers */
     }
-
-    .signup-search-area a  {
-        color: $white_01;
-    }
-}
-
-.header_area, .footer_area {
-    .yummy-logo {
-        img {
-            max-width: 300px;
-        }
-    }
-    .navbar.navbar-expand-lg .navbar-nav .nav-link{
-        color: $white_01;
+    .hover_overlay {
+        @include background-opacity($pink_blackpink, 0.7);
     }
 }
 
@@ -180,6 +166,45 @@ h4.post-headline {
 }
 
 #scrollUp { background: $pink_02; }
+
+h1, h2, h3, h4, h5, h6, p {
+    color: $white_01;
+}
+
+// Header
+.top_header_area {
+    border: unset;
+    .top_social_bar > a {
+        color: $white_01;
+        &:hover {
+            color: $pink_blackpink;
+        }
+    }
+
+    .signup-search-area a  {
+        color: $white_01;
+    }
+}
+
+.header_area, .footer_area {
+    .yummy-logo {
+        img {
+            max-width: 300px;
+        }
+    }
+    .navbar.navbar-expand-lg .navbar-nav .nav-link{
+        color: $white_01;
+    }
+}
+
+#preloader {
+    background: url(/public/img/bg/body_bg.jpg);
+    z-index: 9999;
+}
+
+.yummy-load {
+    border-color: $black_01 $black_01 $pink_blackpink;
+}
 
 // Responsive
 .navbar-toggler {

@@ -16,7 +16,7 @@
                             </div>
                             <!-- Post Date -->
                             <div class="post-date">
-                                <a href="#"> {{ post.created_at }} </a>
+                                <a href="#"> {{ moment(post.created_at).fromNow() }} </a>
                             </div>
                         </div>
                         <!-- Post Comment & Share Area -->
@@ -36,7 +36,7 @@
                         </div>
                     </div>
                     <a href="#">
-                        <h2 class="post-headline"> {{ post.title }} </h2>
+                        <h4 class="post-headline"> {{ post.title }} </h4>
                     </a>
                     <p>{{ post.slug }} </p>
                     <a href="#" class="read-more"> Continue Reading.. </a>
@@ -45,11 +45,18 @@
     </div>
 </template>
 <script>
+    import moment from "moment"
+    
     export default {
         props: {
             post: Object,
             grid: Boolean,
             flex: Boolean,
+        },
+        data () {
+            return {
+                moment: moment,
+            }
         },
         computed: {
             gridClass () {

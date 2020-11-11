@@ -328,7 +328,7 @@
     </div>
 </template>
 <script>
-    import BlogSideBar from ".,/src/components/BlogSideBar/index.vue"
+    import BlogSideBar from "@/components/BlogSideBar/index.vue"
 
     export default {
         components: {

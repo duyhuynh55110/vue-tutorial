@@ -3,10 +3,14 @@ import axios from 'axios'
 const posts = {
   namespaced: true,
   state: {
+    post: null,
     posts: [], // List posts
     popularPosts: [], // List popular posts
   },
   mutations: {
+    setPost: (state, post) => {
+      state.post = post;
+    },
     setPosts: (state, posts) => {
         state.posts = posts;
     },
@@ -15,6 +19,12 @@ const posts = {
     }
   },
   actions: {
+    loadPost: ({ commit }, id) => {
+        axios.get(process.env.VUE_APP_API + "posts/" + id)
+        .then(response => {
+          commit('setPost', response.data);
+        })
+    },
     loadPosts: ({ commit }) => {
         axios.get(process.env.VUE_APP_API + "posts")
         .then(response => {

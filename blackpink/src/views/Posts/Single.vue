@@ -1,32 +1,7 @@
 <template>
     <div class="post-single">
         <!-- Breadcumb -->
-        <div class="breadcumb-area" style="background-image: url(img/bg-img/breadcumb.jpg);">
-            <div class="container h-100">
-                <div class="row h-100 align-items-center">
-                    <div class="col-12">
-                        <div class="bradcumb-title text-center">
-                            <h2>Single Post Blog</h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="breadcumb-nav">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="#"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
-                                <li class="breadcrumb-item"><a href="#">Archive</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Single Post Blog</li>
-                            </ol>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <BreadCumb title="Post Detail" />
 
         <!-- Post Single -->
         <section class="single_blog_area section_padding_80">
@@ -34,17 +9,6 @@
                 <div class="row justify-content-center">
                     <div class="col-12 col-lg-8">
                         <div class="row no-gutters">
-                            <!-- Single Post Share Info -->
-                            <div class="col-2 col-sm-1">
-                                <div class="single-post-share-info mt-100">
-                                    <a href="#" class="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                    <a href="#" class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                    <a href="#" class="googleplus"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
-                                    <a href="#" class="instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                                    <a href="#" class="pinterest"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
-                                </div>
-                            </div>
-
                             <!-- Single Post -->
                             <div class="col-10 col-sm-11">
                                 <div class="single-post">
@@ -52,6 +16,7 @@
                                     <div class="post-thumb">
                                         <img src="img/blog-img/10.jpg" alt="">
                                     </div>
+                                    
                                     <!-- Post Content -->
                                     <div class="post-content">
                                         <div class="post-meta d-flex">
@@ -328,11 +293,20 @@
     </div>
 </template>
 <script>
+    import BreadCumb from "@/components/BreadCumb/index.vue"
     import BlogSideBar from "@/components/BlogSideBar/index.vue"
+    import { mapState } from 'vuex';
 
     export default {
         components: {
             BlogSideBar,
-        }    
+            BreadCumb,
+        },
+        computed: {
+            ...mapState("posts", ["post"])
+        },
+        mounted() {
+            this.$store.dispatch('posts/loadPost', this.$route.params.id);
+        }
     }
 </script>

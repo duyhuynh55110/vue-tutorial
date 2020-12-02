@@ -14,9 +14,10 @@
     "moment": "^2.27.0",
     "sass": "^1.26.10",
     "sass-loader": "^10.0.2",
-    "vue": "^2.6.11",
+    "swiper": "^6.3.5",
+    "vue": "^2.6.12",
     "vue-axios": "^2.1.5",
-    "vue-owl-carousel2": "^2.0.7",
+    "vue-owl-carousel": "^2.0.3",
     "vue-router": "^3.4.3",
     "vuex": "^3.5.1"
   },
@@ -29,7 +30,7 @@
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
-    "vue-template-compiler": "^2.6.11"
+    "vue-template-compiler": "^2.6.12"
   },
   "eslintConfig": {
     "root": true,

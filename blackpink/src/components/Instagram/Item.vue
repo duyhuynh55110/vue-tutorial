@@ -20,18 +20,18 @@
     export default {
         name: "InstagramItem",
         props: {
-            post_code: {
-                type: String,
+            item: {
+                type: Object,
                 required: true,
-                default: 'CFBpfucj5v7',
+                default: null,
             }
         },
         computed: {
-            imagePost: ({post_code}) => {
-                return `https://www.instagram.com/p/${post_code}/media/?size=l`;
+            imagePost: ({item}) => {
+                return item.img;
             },
-            urlPost: ({post_code}) => {
-                return "https://www.instagram.com/p/" + post_code;
+            urlPost: ({item}) => {
+                return "https://www.instagram.com/p/" + item.post_code;
             }
         }
     }

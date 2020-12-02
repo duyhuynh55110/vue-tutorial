@@ -1,12 +1,16 @@
 <template>
     <carousel
         name="slider-area" 
-        :items="4"
         :nav="false" 
         :dots="false"
         :loop="true" 
         :autoHeight="true"
-        :margin="10">
+        :margin="10"
+        :responsive="{
+            0:{items:1},
+            768:{items:2},
+            992:{items:4}
+        }">
             <Slider v-for="post in posts" 
                     :key="post.id" 
                     :post="post" />
@@ -14,7 +18,7 @@
 </template>
 
 <script>
-    import carousel from 'vue-owl-carousel2'
+    import carousel from 'vue-owl-carousel'
     import Slider from "./Slider"
 
     export default {
@@ -50,12 +54,12 @@
                     {
                         id: "4",
                         title: "Jennie",
-                        img: "https://i.pinimg.com/564x/ea/95/23/ea9523345230967ea014a08c4682a2b6.jpg",
+                        img: "https://cdnmedia.thethaovanhoa.vn/Upload/PQgc44ci4D5b7WtAo06jg/files/2020/02/jn19.jpg",
                         created_at: "2020-07-12",
                         views: 10,
                     },
                 ]
             }
-        }
+        },
     }
 </script>

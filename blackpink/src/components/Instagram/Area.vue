@@ -5,13 +5,18 @@
             :nav="false" 
             :dots="false"
             :loop="true" 
-            :autoHeight="true">
-                <Item v-for="(item, index) in items" :key="index" :post_code="item"/>
+            :autoHeight="true"
+            :responsive="{
+                0:{items:2},
+                768:{items:4},
+                992:{items:6}
+            }">
+                <Item v-for="(item, index) in items" :key="index" :item="item"/>
         </carousel>
     </div>
 </template>
 <script>
-    import carousel from "vue-owl-carousel2"
+    import carousel from "vue-owl-carousel"
     import Item from "./Item"
 
     export default {
@@ -23,12 +28,30 @@
         data () {
             return {
                 items: [
-                    "B4bXAYTDL7N",
-                    "CDl_-Ivjxon",
-                    "CE4gQxRBaxF",
-                    "CChXg0sBSsP",
-                    "B8Ic0rHpKzv",
-                    "CEo1ElWDI2y",
+                    {
+                        post_code: "CHj-UlyjBET",
+                        img: "https://i.imgur.com/rlwWJim.jpg"                          
+                    }, 
+                    {
+                        post_code: "CDl_-Ivjxon",
+                        img: "https://i.imgur.com/DfjYA3V.jpg"                          
+                    },  
+                    {
+                        post_code: "CGgxo4jhnBI",
+                        img: "https://i.imgur.com/P20T2zw.jpg"                          
+                    }, 
+                    {
+                        post_code: "CH91yIEDsFQ",
+                        img: "https://i.imgur.com/vdaYLCb.jpg"                          
+                    }, 
+                    {
+                        post_code: "B8Ic0rHpKzv",
+                        img: "https://i.imgur.com/lQDJgIU.jpg"                          
+                    }, 
+                    {
+                        post_code: "CEo1ElWDI2y",
+                        img: "https://i.imgur.com/tN9w8hu.jpg"                          
+                    }, 
                 ],
             }
         }

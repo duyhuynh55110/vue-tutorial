@@ -14,7 +14,7 @@
                                 <div class="single-post">
                                     <!-- Post Thumb -->
                                     <div class="post-thumb">
-                                        <img src="img/blog-img/10.jpg" alt="">
+                                        <img :src="post.img" :alt="post.title">
                                     </div>
                                     
                                     <!-- Post Content -->
@@ -27,7 +27,7 @@
                                                 </div>
                                                 <!-- Post Date -->
                                                 <div class="post-date">
-                                                    <a href="#">May 19, 2017</a>
+                                                    <a href="#"> {{ moment(post.created_at).fromNow() }} </a>
                                                 </div>
                                             </div>
                                             <!-- Post Comment & Share Area -->
@@ -47,7 +47,7 @@
                                             </div>
                                         </div>
                                         <a href="#">
-                                            <h2 class="post-headline">Boil The Kettle And Make A Cup Of Tea Folks, This Is Going To Be A Big One!</h2>
+                                            
                                         </a>
                                         <p>Tiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea. Liusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, qui s nostrud exercitation ullamLorem ipsum dolor sit amet, consectetur adipisicing elit.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
 
@@ -59,13 +59,13 @@
                                         <h4>You Can Buy For Less Than A College Degree</h4>
                                         <p>Dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
 
-                                        <img class="br-30 mb-30" src="img/blog-img/11.jpg" alt="">
+                                        <!-- <img class="br-30 mb-30" src="" alt=""> -->
                                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
 
-                                        <img class="br-30 mb-30" src="img/blog-img/12.jpg" alt="">
+                                        <!-- <img class="br-30 mb-30" src="" alt=""> -->
                                         <p>Liusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, qui s nostrud exercitation ullamLorem ipsum dolor sit amet, consectetur adipisicing elit.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 
-                                        <img class="br-30 mb-30" src="img/blog-img/13.jpg" alt="">
+                                        <!-- <img class="br-30 mb-30" src="" alt=""> -->
                                         <h4>You Can Buy For Less Than A College Degree</h4>
                                         <p>Liusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, qui s nostrud exercitation ullamLorem ipsum dolor sit amet, consectetur adipisicing elit.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaLorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
 
@@ -79,7 +79,7 @@
                                             <li>Lonsectetur adipisicing elit.Lorem ipsum</li>
                                         </ul>
 
-                                        <img class="br-30 mb-15" src="img/blog-img/14.jpg" alt="">
+                                        <!-- <img class="br-30 mb-15" src="" alt=""> -->
                                     </div>
                                 </div>
 
@@ -90,197 +90,11 @@
                                     <a href="#">Ideas</a>
                                 </div>
 
+                                <!-- Comments Area -->
+                                <CommentsArea :commentable_id="post.id" />
+
                                 <!-- Related Post Area -->
-                                <div class="related-post-area section_padding_50">
-                                    <h4 class="mb-30">Related post</h4>
-
-                                    <div class="related-post-slider owl-carousel">
-                                        <!-- Single Related Post-->
-                                        <div class="single-post">
-                                            <!-- Post Thumb -->
-                                            <div class="post-thumb">
-                                                <img src="img/blog-img/15.jpg" alt="">
-                                            </div>
-                                            <!-- Post Content -->
-                                            <div class="post-content">
-                                                <div class="post-meta d-flex">
-                                                    <div class="post-author-date-area d-flex">
-                                                        <!-- Post Author -->
-                                                        <div class="post-author">
-                                                            <a href="#">By Marian</a>
-                                                        </div>
-                                                        <!-- Post Date -->
-                                                        <div class="post-date">
-                                                            <a href="#">May 19, 2017</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <a href="#">
-                                                    <h6>The Top Breakfast And Brunch Spots In Hove</h6>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <!-- Single Related Post-->
-                                        <div class="single-post">
-                                            <!-- Post Thumb -->
-                                            <div class="post-thumb">
-                                                <img src="img/blog-img/5.jpg" alt="">
-                                            </div>
-                                            <!-- Post Content -->
-                                            <div class="post-content">
-                                                <div class="post-meta d-flex">
-                                                    <div class="post-author-date-area d-flex">
-                                                        <!-- Post Author -->
-                                                        <div class="post-author">
-                                                            <a href="#">By Marian</a>
-                                                        </div>
-                                                        <!-- Post Date -->
-                                                        <div class="post-date">
-                                                            <a href="#">May 19, 2017</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <a href="#">
-                                                    <h6>The Top Breakfast And Brunch Spots In Hove</h6>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <!-- Single Related Post-->
-                                        <div class="single-post">
-                                            <!-- Post Thumb -->
-                                            <div class="post-thumb">
-                                                <img src="img/blog-img/16.jpg" alt="">
-                                            </div>
-                                            <!-- Post Content -->
-                                            <div class="post-content">
-                                                <div class="post-meta d-flex">
-                                                    <div class="post-author-date-area d-flex">
-                                                        <!-- Post Author -->
-                                                        <div class="post-author">
-                                                            <a href="#">By Marian</a>
-                                                        </div>
-                                                        <!-- Post Date -->
-                                                        <div class="post-date">
-                                                            <a href="#">May 19, 2017</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <a href="#">
-                                                    <h6>The Top Breakfast And Brunch Spots In Hove</h6>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <!-- Single Related Post-->
-                                        <div class="single-post">
-                                            <!-- Post Thumb -->
-                                            <div class="post-thumb">
-                                                <img src="img/blog-img/5.jpg" alt="">
-                                            </div>
-                                            <!-- Post Content -->
-                                            <div class="post-content">
-                                                <div class="post-meta d-flex">
-                                                    <div class="post-author-date-area d-flex">
-                                                        <!-- Post Author -->
-                                                        <div class="post-author">
-                                                            <a href="#">By Marian</a>
-                                                        </div>
-                                                        <!-- Post Date -->
-                                                        <div class="post-date">
-                                                            <a href="#">May 19, 2017</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <a href="#">
-                                                    <h6>The Top Breakfast And Brunch Spots In Hove</h6>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Comment Area Start -->
-                                <div class="comment_area section_padding_50 clearfix">
-                                    <h4 class="mb-30">2 Comments</h4>
-
-                                    <ol>
-                                        <!-- Single Comment Area -->
-                                        <li class="single_comment_area">
-                                            <div class="comment-wrapper d-flex">
-                                                <!-- Comment Meta -->
-                                                <div class="comment-author">
-                                                    <img src="img/blog-img/17.jpg" alt="">
-                                                </div>
-                                                <!-- Comment Content -->
-                                                <div class="comment-content">
-                                                    <span class="comment-date text-muted">27 Aug 2018</span>
-                                                    <h5>Brandon Kelley</h5>
-                                                    <p>Neque porro qui squam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora.</p>
-                                                    <a href="#">Like</a>
-                                                    <a class="active" href="#">Reply</a>
-                                                </div>
-                                            </div>
-                                            <ol class="children">
-                                                <li class="single_comment_area">
-                                                    <div class="comment-wrapper d-flex">
-                                                        <!-- Comment Meta -->
-                                                        <div class="comment-author">
-                                                            <img src="img/blog-img/18.jpg" alt="">
-                                                        </div>
-                                                        <!-- Comment Content -->
-                                                        <div class="comment-content">
-                                                            <span class="comment-date text-muted">27 Aug 2018</span>
-                                                            <h5>Brandon Kelley</h5>
-                                                            <p>Neque porro qui squam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora.</p>
-                                                            <a href="#">Like</a>
-                                                            <a class="active" href="#">Reply</a>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ol>
-                                        </li>
-                                        <li class="single_comment_area">
-                                            <div class="comment-wrapper d-flex">
-                                                <!-- Comment Meta -->
-                                                <div class="comment-author">
-                                                    <img src="img/blog-img/19.jpg" alt="">
-                                                </div>
-                                                <!-- Comment Content -->
-                                                <div class="comment-content">
-                                                    <span class="comment-date text-muted">27 Aug 2018</span>
-                                                    <h5>Brandon Kelley</h5>
-                                                    <p>Neque porro qui squam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora.</p>
-                                                    <a href="#">Like</a>
-                                                    <a class="active" href="#">Reply</a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ol>
-                                </div>
-
-                                <!-- Leave A Comment -->
-                                <div class="leave-comment-area section_padding_50 clearfix">
-                                    <div class="comment-form">
-                                        <h4 class="mb-30">Leave A Comment</h4>
-
-                                        <!-- Comment Form -->
-                                        <form action="#" method="post">
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" id="contact-name" placeholder="Name">
-                                            </div>
-                                            <div class="form-group">
-                                                <input type="email" class="form-control" id="contact-email" placeholder="Email">
-                                            </div>
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" id="contact-website" placeholder="Website">
-                                            </div>
-                                            <div class="form-group">
-                                                <textarea class="form-control" name="message" id="message" cols="30" rows="10" placeholder="Message"></textarea>
-                                            </div>
-                                            <button type="submit" class="btn contact-btn">Post Comment</button>
-                                        </form>
-                                    </div>
-                                </div>
-
+                                <RelatedPostsArea />
                             </div>
                         </div>
                     </div>
@@ -295,12 +109,24 @@
 <script>
     import BreadCumb from "@/components/BreadCumb/index.vue"
     import BlogSideBar from "@/components/BlogSideBar/index.vue"
+    import RelatedPostsArea from "@/components/Posts/RelatedPostsArea.vue"
+    import CommentsArea from "@/components/Posts/CommentsArea"
+
+    import moment from 'moment'
     import { mapState } from 'vuex';
 
     export default {
+        name: "PostSingle",
         components: {
             BlogSideBar,
             BreadCumb,
+            RelatedPostsArea,
+            CommentsArea,
+        },
+         data () {
+            return {
+                moment: moment,
+            }
         },
         computed: {
             ...mapState("posts", ["post"])

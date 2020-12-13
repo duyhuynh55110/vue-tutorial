@@ -1,7 +1,7 @@
 <template>
      <!-- Single Popular Post -->
     <div class="single-populer-post d-flex">
-        <img :src="post.image" alt="">
+        <img :src="post.img" alt="">
         <div class="post-content">
             <a href="#">
                 <h6> {{ post.title }}</h6>

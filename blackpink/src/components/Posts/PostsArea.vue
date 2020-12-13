@@ -4,12 +4,15 @@
                 <div class="row justify-content-center">
                     <div class="col-12 col-lg-8">
                         <div class="row">
-                            <Post v-for="(post, index) in posts" 
-                                :key="post.id" 
-                                :post="post"
-                                :grid="(index > 0 && index < 5)? true: false"
-                                :flex="(index >= 5)? true: false"
-                                :text="index" />   
+                            <div v-for="(post, index) in posts" :key="index" :class="(index > 0 && index < 5)? 'col-12 col-md-6': 'col-12'">
+                                <Post 
+                                    :key="post.id" 
+                                    :post="post"
+                                    :flex="(index >= 5)? true: false"
+                                    :text="index"
+                                    :continueReading="true" /> 
+                            </div>
+
                         </div>
                     </div>   
 

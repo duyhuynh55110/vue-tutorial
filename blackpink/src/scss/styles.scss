@@ -2,6 +2,83 @@
 @import "./_mixin.scss";
 @import "./_responsive.scss";
 
+.comment-form {
+  input, textarea {
+    border: 1px solid #525252 !important;
+    background: $transparent;
+    color: $gray_01;
+
+    &:focus { 
+      box-shadow: 0 0 10px $pink_blackpink;
+      border: 1px solid $pink_03 !important;
+      background: $transparent;
+      color: #e9ecef;
+    }
+  }
+
+  .contact-btn {
+    &:hover {
+      background: $pink_hover;
+    }
+  }
+}
+
+.contact-btn {
+  background: $pink_blackpink;
+}
+
+.single_comment_area {
+  &:after {
+    background-color: $gray_01;
+  }
+}
+
+.comment-wrapper {
+  .comment-content {
+    a {
+      border: 1px solid rgba($gray_01, 0.7);
+      color: $white_01;
+      margin-right: 5px;
+
+      &.active {
+        color: $white_01;
+        background-color: $pink_blackpink;
+      }
+    }
+  }
+}
+
+.tags-area, .related-post-area, .comment_area {
+    border-bottom: 1px solid rgba($gray_01, 0.7);
+}
+
+.tags-area {
+  a {
+    margin-right: 10px;
+    background: $gray_01;
+    color: $white_01;
+    &:hover {
+        background-color: $pink_blackpink;
+    }
+  }
+}
+
+.single_blog_area {
+  ul {
+    li {
+      &:before {
+        color: $pink_blackpink;
+      }
+      color: $gray_01;
+    }
+  }
+}
+
+.yummy-blockquote {
+  padding-left: 30px;
+  border-left: 2px solid $pink_blackpink;
+}
+
 .instagram_gallery_item {
   img {
     min-height: 100%;

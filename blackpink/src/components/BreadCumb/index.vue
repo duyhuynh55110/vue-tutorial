@@ -36,7 +36,7 @@
         props: ["title", "background"],
         computed: {
             setArea() {
-                let image = (this.background)? 'url(' + this.background +')': 'url(https://style-republik.com/wp-content/uploads/2020/10/M%C2%B7A%C2%B7C-x-LISA-Announcement-KV.jpg)'
+                let image = (this.background)? 'url(' + this.background + ')': 'url(https://style-republik.com/wp-content/uploads/2020/10/M%C2%B7A%C2%B7C-x-LISA-Announcement-KV.jpg)'
                 return {
                     'background-image': image
                 }

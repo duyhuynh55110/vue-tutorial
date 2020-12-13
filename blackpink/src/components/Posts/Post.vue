@@ -1,9 +1,8 @@
 <template>
-    <div :class="gridClass">
-        <div :class="flexClass" :data-wow-delay="delayTime">
+     <div :class="flexClass" :data-wow-delay="delayTime">
              <!-- Post Thumb -->
                 <div class="post-thumb">
-                    <img :src="post.image" alt="">
+                    <img :src="post.img" alt="">
                 </div>
                 
                 <!-- Post Content -->
@@ -20,7 +19,7 @@
                             </div>
                         </div>
                         <!-- Post Comment & Share Area -->
-                        <div class="post-comment-share-area d-flex">
+                        <div v-if="shareArea === true" class="post-comment-share-area d-flex">
                             <!-- Post Favourite -->
                             <div class="post-favourite">
                                 <a href="#"><i class="fa fa-heart" aria-hidden="true"></i> 10 </a>
@@ -36,22 +35,36 @@
                         </div>
                     </div>
                     <a href="#">
-                        <h4 class="post-headline"> {{ post.title }} </h4>
+                      <v-runtime-template :template="headlineTitle"></v-runtime-template>
                     </a>
                     <p>{{ post.slug }} </p>
-                    <a href="#" class="read-more"> Continue Reading.. </a>
+                    <a href="#" class="read-more" v-if="continueReading === true"> Continue Reading.. </a>
                 </div>
-        </div>
-    </div>
+     </div>
 </template>
 <script>
+    import VRuntimeTemplate from "v-runtime-template";
     import moment from "moment"
     
     export default {
         props: {
             post: Object,
-            grid: Boolean,
             flex: Boolean,
+            continueReading: {
+                type: Boolean,
+                default: false,
+            },
+            shareArea: {
+                type: Boolean,
+                default: true,
+            },
+            headlineType: {
+                type: String,
+                default: "h4",
+            }
+        },
+        components: {
+            VRuntimeTemplate,
         },
         data () {
             return {
@@ -59,9 +72,8 @@
             }
         },
         computed: {
-            gridClass () {
-                let defaultClass = 'col-12 ';
-                return (this.grid)? defaultClass + 'col-md-6': defaultClass;
+            headlineTitle () {
+                return `<${this.headlineType} class="post-headline"> ${this.post.title} </${this.headlineType}>`
             },
             flexClass () {
                 let defaultClass = 'single-post wow ';

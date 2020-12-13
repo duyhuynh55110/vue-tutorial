@@ -6,8 +6,12 @@ const posts = {
     post: null,
     posts: [], // List posts
     popularPosts: [], // List popular posts
+    relatedPosts: [], // List related posts
   },
   mutations: {
+    setRelatedPosts: (state, relatedPosts) => {
+      state.relatedPosts = relatedPosts;
+    },
     setPost: (state, post) => {
       state.post = post;
     },
@@ -19,6 +23,12 @@ const posts = {
     }
   },
   actions: {
+    loadRelatedPosts: ({ commit }, id) => {
+        axios.get(process.env.VUE_APP_API + "posts/get-related-posts/" + id)
+        .then(response => {
+          commit('setRelatedPosts', response.data.data);
+        });
+    },
     loadPost: ({ commit }, id) => {
         axios.get(process.env.VUE_APP_API + "posts/" + id)
         .then(response => {
@@ -32,10 +42,10 @@ const posts = {
         });
     },
     loadPopularPosts: ({ commit }) => {
-      axios.get(process.env.VUE_APP_API + "posts/get-popular-posts")
-      .then(response => {
-          commit('setPopularPosts', response.data);
-      });
+        axios.get(process.env.VUE_APP_API + "posts/get-popular-posts")
+        .then(response => {
+            commit('setPopularPosts', response.data);
+        });
     }
   },
 }

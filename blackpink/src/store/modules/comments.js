@@ -8,7 +8,7 @@ const comments = {
     mutations: {
         setPostComments: (state, postComments) => {
             state.postComments = postComments;
-        }
+        },
     },
     actions: {
         loadPostComments: ({ commit }, id) => {

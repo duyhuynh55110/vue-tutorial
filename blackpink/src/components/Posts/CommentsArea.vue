@@ -77,7 +77,9 @@
                     .then(response => {
                         console.log(response);
                         if(response.success == true) {
-                            this.$store.dispatch('comments/loadPostComments', this.commentable_id);
+                            // this.$store.commit('comments/setPostComments', {
+                            //     postsComments: response.data.data,
+                            // });
                         }
                     }).catch(e => {
                         console.log(e);

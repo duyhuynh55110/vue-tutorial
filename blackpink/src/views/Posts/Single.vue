@@ -14,7 +14,7 @@
                                 <div class="single-post">
                                     <!-- Post Thumb -->
                                     <div class="post-thumb">
-                                        <img :src="post.img" :alt="post.title">
+                                        <img v-if="post" :src="post.img" :alt="post.title">
                                     </div>
                                     
                                     <!-- Post Content -->
@@ -27,7 +27,7 @@
                                                 </div>
                                                 <!-- Post Date -->
                                                 <div class="post-date">
-                                                    <a href="#"> {{ moment(post.created_at).fromNow() }} </a>
+                                                    <a v-if="post" href="#"> {{ moment(post.created_at).fromNow() }} </a>
                                                 </div>
                                             </div>
                                             <!-- Post Comment & Share Area -->
@@ -91,7 +91,7 @@
                                 </div>
 
                                 <!-- Comments Area -->
-                                <CommentsArea :commentable_id="post.id" />
+                                <CommentsArea v-if="post" :commentable_id="post.id" />
 
                                 <!-- Related Post Area -->
                                 <RelatedPostsArea />
@@ -110,7 +110,7 @@
     import BreadCumb from "@/components/BreadCumb/index.vue"
     import BlogSideBar from "@/components/BlogSideBar/index.vue"
     import RelatedPostsArea from "@/components/Posts/RelatedPostsArea.vue"
-    import CommentsArea from "@/components/Posts/CommentsArea"
+    import CommentsArea from "@/components/Comments/CommentsArea"
 
     import moment from 'moment'
     import { mapState } from 'vuex';
@@ -131,8 +131,8 @@
         computed: {
             ...mapState("posts", ["post"])
         },
-        mounted() {
+        beforeCreate() {
             this.$store.dispatch('posts/loadPost', this.$route.params.id);
-        }
+        },
     }
 </script>

@@ -9,8 +9,7 @@
                                     :key="post.id" 
                                     :post="post"
                                     :flex="(index >= 5)? true: false"
-                                    :text="index"
-                                    :continueReading="true" /> 
+                                    :text="index" /> 
                             </div>
 
                         </div>
@@ -25,8 +24,7 @@
 <script>
     import { mapState } from "vuex"
     import Post from './Post'
-
-    import BlogSideBar from "../BlogSideBar"
+    import BlogSideBar from "@blogSideBar/components/index"
 
     export default {
         name: "PostsArea",

@@ -59,7 +59,7 @@
     </div>
 </template>
 <script>
-    import PopularPost from "../Posts/PopularPost"
+    import PopularPost from "@posts/components/PopularPost"
     import { mapState } from 'vuex';
     
     export default {

@@ -13,11 +13,13 @@
                             <div class="post-author">
                                 <a href="#"> By Marian </a>
                             </div>
+
                             <!-- Post Date -->
                             <div class="post-date">
                                 <a href="#"> {{ moment(post.created_at).fromNow() }} </a>
                             </div>
                         </div>
+
                         <!-- Post Comment & Share Area -->
                         <div v-if="shareArea === true" class="post-comment-share-area d-flex">
                             <!-- Post Favourite -->
@@ -34,7 +36,7 @@
                             </div>
                         </div>
                     </div>
-                    <a href="#">
+                    <a :href="postDetail">
                       <v-runtime-template :template="headlineTitle"></v-runtime-template>
                     </a>
                     <p>{{ post.slug }} </p>
@@ -81,6 +83,9 @@
             },
             delayTime () {
                 return (this.grid)? ".2s": ".6s";
+            },
+            postDetail() {
+                return "/posts/" + this.post.id;
             }
         }
     }

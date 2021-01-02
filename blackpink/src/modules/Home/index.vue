@@ -15,10 +15,10 @@
 </template>
 
 <script>
-    import SlidersArea from "../components/Posts/SlidersArea"
-    import CategoriesArea from "../components/Categories/CategoriesArea"
-    import PostsArea from "../components/Posts/PostsArea"
-    import InstagramArea from "../components/Instagram/Area"
+    import SlidersArea from "@posts/components/SlidersArea"
+    import CategoriesArea from "@categories/components/CategoriesArea"
+    import PostsArea from "@posts/components/PostsArea"
+    import InstagramArea from "@instagram/components/Area"
 
     export default {
         name: 'Home',

@@ -107,10 +107,10 @@
     </div>
 </template>
 <script>
-    import BreadCumb from "@/components/BreadCumb/index.vue"
-    import BlogSideBar from "@/components/BlogSideBar/index.vue"
-    import RelatedPostsArea from "@/components/Posts/RelatedPostsArea.vue"
-    import CommentsArea from "@/components/Comments/CommentsArea"
+    import BreadCumb from "@breadCumb/components/index.vue"
+    import BlogSideBar from "@blogSideBar/components/index.vue"
+    import RelatedPostsArea from "@posts/components/RelatedPostsArea.vue"
+    import CommentsArea from "@comments/components/CommentsArea"
 
     import moment from 'moment'
     import { mapState } from 'vuex';

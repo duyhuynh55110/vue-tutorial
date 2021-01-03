@@ -5,15 +5,8 @@
       <div class="comment-control">
         <h4 class="mb-30">Leave A Comment</h4>
 
-        <div v-if="errors.length > 0" class="alert alert-danger" role="alert">
-          <h4 class="alert-heading">Errors</h4>
-          <span v-for="(error, index) in errors" :key="index" class="d-flex">
-            {{ error }}
-          </span>
-        </div>
-
         <!-- Comment Form -->
-        <CommentForm />
+        <CommentForm @store-comment="storeComment"/>
       </div>
     </div>
 
@@ -43,7 +36,6 @@
 </template>
 
 <script>
-import axios from "axios";
 import { mapState } from "vuex";
 
 import Comment from "./Comment";
@@ -51,13 +43,6 @@ import CommentForm from "./CommentForm";
 
 export default {
   name: "CommentArea",
-  data() {
-    return {
-      errors: [],
-      title: null,
-      content: null,
-    };
-  },
   components: {
     Comment,
     CommentForm,
@@ -71,42 +56,15 @@ export default {
     },
   },
   methods: {
+    storeComment(comment) {
+      this.postComments.unshift(comment);
+      this.postCommentsMeta.total++;
+    },
     loadMore() {
       this.$store.dispatch("comments/loadPostComments", {
         id: this.commentable_id,
         loadPage: this.postCommentsMeta.current_page + 1,
       });
-    },
-    // Store newly comment to database and refresh list
-    async submitForm(e) {
-      e.preventDefault();
-      this.errors = [];
-
-      // Validation form
-      if (!this.title) this.errors.push("title is required");
-      if (!this.content) this.errors.push("content is required");
-
-      // If valid values
-      if (!this.errors.length) {
-        await axios
-          .post(process.env.VUE_APP_API + "comments", {
-            commentable_id: this.$route.params.id,
-            comment_type: "post",
-            title: this.title,
-            content: this.content,
-          })
-          .then((response) => {
-            console.log(response);
-            if (response.data.success == true) {
-              this.$store.dispatch("comments/loadPostComments", {
-                id: this.commentable_id,
-              });
-            }
-          })
-          .catch((e) => {
-            console.log(e);
-          });
-      }
     },
   },
   computed: {
@@ -123,7 +81,7 @@ export default {
       return totalComments;
     },
   },
-  created() {
+  mounted() {
     this.$store.dispatch("comments/loadPostComments", {
       id: this.commentable_id,
     });

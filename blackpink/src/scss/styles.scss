@@ -2,6 +2,7 @@
 @import "./_mixin.scss";
 @import "./_responsive.scss";
 
+
 .comment_area {
   .load-more {
     color: $gray_01 !important;
@@ -43,7 +44,7 @@
         right: auto;
         position: absolute;
         color: $gray_01 !important;
-        top: calc(50% - 10px);
+        top: calc(50% - 15px);
         width: 100%;
       }
       input {
@@ -133,12 +134,27 @@
 
 .single_comment_area {
   &:after {
-    background-color: $gray_01;
+    display: none;
   }
 }
 
 .comment-wrapper {
+  margin-bottom: 15px;
   .comment-content {
+    a.comment-favourite, span.comment-reply {
+      color: #b5aec4;
+      font-size: 14px;
+      min-width: 40px;
+      height: 40px;
+      line-height: 40px;
+      border: none;
+      cursor: pointer;
+
+      &:hover {
+        color: $pink_blackpink;
+      }
+    }
+
     a {
       border: 1px solid rgba($gray_01, 0.7);
       color: $white_01;
@@ -149,6 +165,18 @@
         background-color: $pink_blackpink;
       }
     }
+  }
+  .comment-date {
+    color: #89929a;
+    font-size: 12px;
+    line-height: 43px;
+    border: none;
+    text-transform: none;
+  }
+  .comment-reply {
+    flex-basis: 100%;
+    margin: 0;
+    margin-bottom: 2%;
   }
 }
 

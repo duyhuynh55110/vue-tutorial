@@ -6,28 +6,39 @@
         <h4 class="mb-30">Leave A Comment</h4>
 
         <!-- Comment Form -->
-        <CommentForm @store-comment="storeComment"/>
+        <CommentForm @store-comment="storeComment" />
       </div>
     </div>
 
     <!-- Comment Area Start -->
     <div
-      v-if="this.postCommentsMeta"
+      v-if="this.commentsMeta"
       class="comment_area section_padding_50 clearfix"
     >
-      <h4 class="mb-30">Comments ({{ this.postCommentsMeta.total }})</h4>
+      <h4 class="mb-30">Comments ({{ this.commentsMeta.total }})</h4>
 
-      <ol v-for="comment in postComments" :key="comment.id">
-        <!-- Comments Area -->
-        <Comment :comment="comment" />
-      </ol>
+      <!-- Comments -->
+      <Comments :comments="comments" />
 
+      <div
+        v-if="comments.length < 1"
+        style="
+          width: 100%;
+          text-align: center;
+          color: #868e96;
+          font-size: 16px;
+          margin: 0 auto;
+          font-style: italic;
+        "
+      >
+        There are no comments now
+      </div>
+
+      <!-- Load more -->
       <div
         class="load-more"
         @click="loadMore()"
-        v-if="
-          this.postCommentsMeta.last_page > this.postCommentsMeta.current_page
-        "
+        v-if="this.commentsMeta.last_page > this.commentsMeta.current_page"
       >
         <span> Load {{ this.getTotalCommentsNextPage }} comments... </span>
       </div>
@@ -36,16 +47,16 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
-
-import Comment from "./Comment";
 import CommentForm from "./CommentForm";
+import Comments from "./Comments";
+
+import { mapState } from "vuex";
 
 export default {
   name: "CommentArea",
   components: {
-    Comment,
     CommentForm,
+    Comments,
   },
   props: {
     commentable_id: {
@@ -57,32 +68,31 @@ export default {
   },
   methods: {
     storeComment(comment) {
-      this.postComments.unshift(comment);
-      this.postCommentsMeta.total++;
+      this.comments.unshift(comment);
+      this.commentsMeta.total++;
     },
     loadMore() {
-      this.$store.dispatch("comments/loadPostComments", {
+      this.$store.dispatch("comments/loadComments", {
         id: this.commentable_id,
-        loadPage: this.postCommentsMeta.current_page + 1,
+        loadPage: this.commentsMeta.current_page + 1,
       });
     },
   },
   computed: {
-    ...mapState("comments", ["postComments", "postCommentsMeta"]),
+    ...mapState("comments", ["comments", "commentsMeta"]),
     getTotalCommentsNextPage() {
-      let totalComments =
-        this.postCommentsMeta.total - this.postCommentsMeta.to;
+      let totalComments = this.commentsMeta.total - this.commentsMeta.to;
 
       // If total comments not load large total comments per_page => set to per_page
       totalComments =
-        totalComments > this.postCommentsMeta.per_page
-          ? this.postCommentsMeta.per_page
+        totalComments > this.commentsMeta.per_page
+          ? this.commentsMeta.per_page
           : totalComments;
       return totalComments;
     },
   },
   mounted() {
-    this.$store.dispatch("comments/loadPostComments", {
+    this.$store.dispatch("comments/loadComments", {
       id: this.commentable_id,
     });
   },

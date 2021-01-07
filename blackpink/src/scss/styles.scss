@@ -4,6 +4,25 @@
 
 
 .comment_area {
+  .view-replies {
+    color: $pink_blackpink;
+    font-size: 13px;
+    cursor: pointer;
+
+    .icon {
+      font-size: 13px;
+      position: relative;
+      bottom: 2.5px;
+    }
+  }
+  .replies-area {
+    ol {
+      li {
+        margin-left: 0px;
+      }
+    }
+  }
+
   .load-more {
     color: $gray_01 !important;
     cursor: pointer;

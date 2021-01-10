@@ -6,7 +6,7 @@
         <h4 class="mb-30">Leave A Comment</h4>
 
         <!-- Comment Form -->
-        <CommentForm @store-comment="storeComment" />
+        <CommentForm @store-comment="storeComment" :commentable_id="this.commentable_id" />
       </div>
     </div>
 

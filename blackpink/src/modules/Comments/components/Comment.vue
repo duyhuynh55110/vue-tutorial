@@ -27,20 +27,26 @@
 
           <!-- Form reply -->
           <div v-if="replying" class="comment-reply">
-            <CommentForm v-if="comment.id" :reply_id="comment.id" @store-comment="changeReplying" />
+            <CommentForm 
+              v-if="comment.id" 
+              :reply_id="(!comment.reply_id)? comment.id: comment.reply_id" 
+              :commentable_id="comment.commentable_id" 
+              @store-comment="changeReplying" />
           </div>
 
           <!-- Comments Reply -->
-          <div class="replies-area">
+          <div v-if="comment.replies_count" class="replies-area">
+            <!-- Show or hide -->
             <div
-              v-if="!comment.reply_id"
               @click="loadOrHideCommentsReply"
               class="view-replies"
             >
-              <span class="icon mr-2" v-html="viewReplies.icon"></span>
+              <span class="icon mr-2"> <i class="fas fa-sort-down"></i> </span>
               {{ this.viewReplies.content }}
             </div>
-            <comments-replies
+
+            <!-- Comments Reply -->
+            <CommentsReply
               v-if="viewReplies.isShow"
               :comments="commentsReply"
               classObj="mt-4"
@@ -66,7 +72,7 @@ export default {
   },
   components: {
     CommentForm,
-    "comments-replies": () => import('./Comments'),
+    CommentsReply: () => import('./Comments'),
   },
   data() {
     return {
@@ -74,8 +80,7 @@ export default {
       replying: false,
       viewReplies: {
         isShow: false,
-        icon: '<i class="fas fa-sort-down"></i>',
-        content: 'View replies',
+        content: '',
       },
       commentsReply: [],
     };
@@ -85,33 +90,37 @@ export default {
       this.replying = !this.replying;
     },
     async loadOrHideCommentsReply() {
-      let changeStatus = !this.viewReplies.isShow;
-      this.viewReplies = {
-        isShow: changeStatus,
-        icon: (!changeStatus)? '<i class="fas fa-sort-down"></i>': '<i class="fas fa-sort-up"></i>',
-        content: (!changeStatus)? 'View Replies': 'Hide Replies',
-      };
+      this.displayViewReplies(!this.viewReplies.isShow);
 
-      await axios.get(process.env.VUE_APP_API + "comments/get-comments-reply/" + this.comment.id).then(response => { 
+      if(this.viewReplies.isShow && this.commentsReply.length <= 5) {
+        await axios.get(process.env.VUE_APP_API + "comments/get-comments-reply/" + this.comment.id).then(response => { 
           this.commentsReply = [...response.data.data];
-      });
+        });
+      }
+    },
+    displayViewReplies(status = false) {
+      try {
+        this.viewReplies = {
+            isShow: status,
+            content: (!status)? 'View ' + this.comment.replies_count + ' replies': 'Hide replies',
+        };
+      } catch(e) {
+          this.viewReplies = {
+            isShow: false,
+            content: '',
+          }
+      }
     },
   },
   computed: {
-    showViewReplies() {
-      if (typeof this.comment != "undefined") {
-        if (!this.comment.reply_id) {
-          return true;
-        }
-      }
-      return false;
-    },
     classObject() {
       return {
         single_comment_area: true,
-        "ml-0": this.showViewReplies,
       };
     },
   },
+  created() {
+      this.displayViewReplies();
+  }
 };
 </script>

@@ -51,6 +51,10 @@ export default {
     reply_id: {
       type: String,
       default: null,
+    },
+    commentable_id: {
+      type: String,
+      required: true,
     }
   },
   methods: {
@@ -67,7 +71,7 @@ export default {
       if (!this.errors.length) {
         await axios
           .post(process.env.VUE_APP_API + "comments", {
-            commentable_id: this.$route.params.id,
+            commentable_id: this.commentable_id,
             comment_type: "post",
             title: "Test",
             content: this.content,

@@ -1,5 +1,5 @@
 <template>
-  <div class="post-single">
+  <div class="post-single">                 
     <!-- Breadcumb -->
     <BreadCumb title="Post Detail" />
 

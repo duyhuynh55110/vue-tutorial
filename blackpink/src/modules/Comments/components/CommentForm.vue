@@ -7,7 +7,7 @@
       </span>
     </div>
 
-    <form class="v-input__slot" @submit="submitForm" action="123">
+    <form v-if="!loading" class="v-input__slot" @submit="submitForm" action="123">
       <div class="v-text-field__slot">
         <label
           v-if="!focusing && content.length < 1"
@@ -33,16 +33,24 @@
         </button>
       </div>
     </form>
+
+    <Loader :loading="loading" />
   </div>
 </template>
 <script>
+// import utils from "@/utils/index";
+import Loader from "@/components/Spinner/YummyLoader"
 import axios from "axios";
 
 export default {
   name: "CommentForm",
+  components: {
+    Loader,
+  },
   data() {
     return {
       focusing: false,
+      loading: false,
       content: "",
       errors: [],
     };
@@ -63,6 +71,7 @@ export default {
       e.preventDefault();
       this.errors = [];
       this.content = this.$refs.content.value;
+      this.loading = !this.loading;
 
       // Validation form
       if (!this.content) this.errors.push("content is required");
@@ -87,6 +96,8 @@ export default {
             console.log(e);
           });
       }
+
+      this.loading = !this.loading;
     },
   },
 };

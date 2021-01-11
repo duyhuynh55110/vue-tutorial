@@ -1,10 +1,5 @@
 <template>
     <div>
-        <!-- Preloader Start -->
-    <div id="preloader">
-        <div class="yummy-load"></div>
-    </div>
-
     <!-- ****** Top Header Area Start ****** -->
     <div class="top_header_area">
         <div class="container">

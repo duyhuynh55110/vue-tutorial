@@ -27,20 +27,18 @@
 
           <!-- Form reply -->
           <div v-if="replying" class="comment-reply">
-            <CommentForm 
-              v-if="comment.id" 
-              :reply_id="(!comment.reply_id)? comment.id: comment.reply_id" 
-              :commentable_id="comment.commentable_id" 
-              @store-comment="changeReplying" />
+            <CommentForm
+              v-if="comment.id"
+              :reply_id="!comment.reply_id ? comment.id : comment.reply_id"
+              :commentable_id="comment.commentable_id"
+              @store-comment="changeReplying"
+            />
           </div>
 
           <!-- Comments Reply -->
           <div v-if="comment.replies_count" class="replies-area">
             <!-- Show or hide -->
-            <div
-              @click="loadOrHideCommentsReply"
-              class="view-replies"
-            >
+            <div @click="loadOrHideCommentsReply" class="view-replies">
               <span class="icon mr-2"> <i class="fas fa-sort-down"></i> </span>
               {{ this.viewReplies.content }}
             </div>
@@ -72,7 +70,7 @@ export default {
   },
   components: {
     CommentForm,
-    CommentsReply: () => import('./Comments'),
+    CommentsReply: () => import("./Comments"),
   },
   data() {
     return {
@@ -80,7 +78,7 @@ export default {
       replying: false,
       viewReplies: {
         isShow: false,
-        content: '',
+        content: "",
       },
       commentsReply: [],
     };
@@ -92,23 +90,31 @@ export default {
     async loadOrHideCommentsReply() {
       this.displayViewReplies(!this.viewReplies.isShow);
 
-      if(this.viewReplies.isShow && this.commentsReply.length <= 5) {
-        await axios.get(process.env.VUE_APP_API + "comments/get-comments-reply/" + this.comment.id).then(response => { 
-          this.commentsReply = [...response.data.data];
-        });
+      if (this.viewReplies.isShow && !this.commentsReply.length) {
+        await axios
+          .get(
+            process.env.VUE_APP_API +
+              "comments/get-comments-reply/" +
+              this.comment.id
+          )
+          .then((response) => {
+            this.commentsReply = [...response.data.data];
+          });
       }
     },
     displayViewReplies(status = false) {
       try {
         this.viewReplies = {
-            isShow: status,
-            content: (!status)? 'View ' + this.comment.replies_count + ' replies': 'Hide replies',
+          isShow: status,
+          content: !status
+            ? "View " + this.comment.replies_count + " replies"
+            : "Hide replies",
         };
-      } catch(e) {
-          this.viewReplies = {
-            isShow: false,
-            content: '',
-          }
+      } catch (e) {
+        this.viewReplies = {
+          isShow: false,
+          content: "",
+        };
       }
     },
   },
@@ -120,7 +126,7 @@ export default {
     },
   },
   created() {
-      this.displayViewReplies();
-  }
+    this.displayViewReplies();
+  },
 };
 </script>

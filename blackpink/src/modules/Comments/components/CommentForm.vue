@@ -7,7 +7,12 @@
       </span>
     </div>
 
-    <form v-if="!loading" class="v-input__slot" @submit="submitForm" action="123">
+    <form
+      v-if="!loading"
+      class="v-input__slot"
+      @submit="submitForm"
+      action="123"
+    >
       <div class="v-text-field__slot">
         <label
           v-if="!focusing && content.length < 1"
@@ -39,7 +44,7 @@
 </template>
 <script>
 // import utils from "@/utils/index";
-import Loader from "@/components/Spinner/YummyLoader"
+import Loader from "@/components/Spinner/YummyLoader";
 import axios from "axios";
 
 export default {
@@ -63,7 +68,7 @@ export default {
     commentable_id: {
       type: String,
       required: true,
-    }
+    },
   },
   methods: {
     // Store newly comment to database and refresh list

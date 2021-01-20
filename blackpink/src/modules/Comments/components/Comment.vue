@@ -94,11 +94,12 @@ export default {
         await axios
           .get(
             process.env.VUE_APP_API +
-              "comments/get-comments-reply/" +
+              "comments/get-comments/" +
               this.comment.id
           )
           .then((response) => {
             this.commentsReply = [...response.data.data];
+            this.commentsReplyMeta = [];
           });
       }
     },

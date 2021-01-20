@@ -6,7 +6,10 @@
         <h4 class="mb-30">Leave A Comment</h4>
 
         <!-- Comment Form -->
-        <CommentForm @store-comment="storeComment" :commentable_id="this.commentable_id" />
+        <CommentForm
+          @store-comment="storeComment"
+          :commentable_id="this.commentable_id"
+        />
       </div>
     </div>
 
@@ -18,8 +21,13 @@
       <h4 class="mb-30">Comments ({{ this.commentsMeta.total }})</h4>
 
       <!-- Comments -->
-      <Comments :comments="comments" />
+      <Comments
+        :comments="comments"
+        :commentsMeta="this.commentsMeta"
+        @load-more="loadData"
+      />
 
+      <!-- There are no comments -->
       <div
         v-if="comments.length < 1"
         style="
@@ -33,15 +41,6 @@
       >
         There are no comments now
       </div>
-
-      <!-- Load more -->
-      <div
-        class="load-more"
-        @click="loadMore()"
-        v-if="this.commentsMeta.last_page > this.commentsMeta.current_page"
-      >
-        <span> Load {{ this.getTotalCommentsNextPage }} comments... </span>
-      </div>
     </div>
   </div>
 </template>
@@ -49,7 +48,6 @@
 <script>
 import CommentForm from "./CommentForm";
 import Comments from "./Comments";
-
 import { mapState } from "vuex";
 
 export default {
@@ -62,39 +60,26 @@ export default {
     commentable_id: {
       required: true,
     },
-    nextTotalComments: {
-      default: 0,
-    },
   },
   methods: {
+    loadData() {
+      this.$store.dispatch("comments/loadComments", {
+        id: this.commentable_id,
+        ...(this.commentsMeta
+          ? { page: this.commentsMeta.current_page + 1 }
+          : {}),
+      });
+    },
     storeComment(comment) {
       this.comments.unshift(comment);
       this.commentsMeta.total++;
     },
-    loadMore() {
-      this.$store.dispatch("comments/loadComments", {
-        id: this.commentable_id,
-        loadPage: this.commentsMeta.current_page + 1,
-      });
-    },
   },
   computed: {
     ...mapState("comments", ["comments", "commentsMeta"]),
-    getTotalCommentsNextPage() {
-      let totalComments = this.commentsMeta.total - this.commentsMeta.to;
-
-      // If total comments not load large total comments per_page => set to per_page
-      totalComments =
-        totalComments > this.commentsMeta.per_page
-          ? this.commentsMeta.per_page
-          : totalComments;
-      return totalComments;
-    },
   },
   mounted() {
-    this.$store.dispatch("comments/loadComments", {
-      id: this.commentable_id,
-    });
+    this.loadData();
   },
 };
 </script>

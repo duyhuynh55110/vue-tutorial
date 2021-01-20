@@ -15,11 +15,14 @@ const comments = {
         },
     },
     actions: {
-        loadComments: ({ commit, state }, {id, loadPage = 1}) => {
-            axios.get(process.env.VUE_APP_API + "comments/get-comments/" + id + "?page=" + loadPage)
+        loadComments: ({ commit, state }, {id, page = 1, reply_id = null}) => {
+            let requestPage = "?page=" + page;
+            let requestReplyId = (reply_id)? "&reply_id=" + reply_id: '';
+
+            axios.get(process.env.VUE_APP_API + "comments/get-comments/" + id + requestPage + requestReplyId)
             .then(response => {
                 const { ["data"]: responseData, ...responseMeta } = response.data;      
-                commit('setComments', (loadPage > 1)? [...state.comments, ...responseData]: responseData);
+                commit('setComments', (page > 1)? [...state.comments, ...responseData]: responseData);
                 commit('setCommentsMeta', responseMeta);
             });
         },

@@ -10,7 +10,7 @@
           <div class="col-12 col-lg-8">
             <div class="row no-gutters">
               <!-- Single Post -->
-              <div class="col-10 col-sm-11">
+              <div class="col-12">
                 <div class="single-post">
                   <!-- Post Thumb -->
                   <div class="post-thumb">

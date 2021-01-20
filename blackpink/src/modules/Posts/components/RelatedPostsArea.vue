@@ -3,6 +3,7 @@
         <h4 class="mb-30">Related post</h4>
 
         <carousel 
+                v-if="relatedPosts.length > 0"
                 name="slider-area" 
                 :nav="false" 
                 :dots="false"
@@ -38,7 +39,7 @@
         },
         mounted() {
             this.$store.dispatch('posts/loadRelatedPosts', {
-                id: 1
+                id: this.$route.params.id
             });
         }
     }

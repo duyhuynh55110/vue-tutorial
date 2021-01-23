@@ -15,16 +15,16 @@
 
     <!-- Comment Area Start -->
     <div
-      v-if="this.commentsMeta"
+      v-if="this.comments"
       class="comment_area section_padding_50 clearfix"
     >
-      <h4 class="mb-30">Comments ({{ this.commentsMeta.total }})</h4>
+      <h4 class="mb-30">Comments ({{ totalComments }})</h4>
 
       <!-- Comments -->
       <Comments
         :comments="comments"
-        :commentsMeta="this.commentsMeta"
-        @load-more="loadData"
+        :commentsMeta="commentsMeta"
+        @load-more="loadComments"
       />
 
       <!-- There are no comments -->
@@ -46,9 +46,9 @@
 </template>
 
 <script>
+import CommentsRepository from "@comments/repositories/CommentsRepository";
 import CommentForm from "./CommentForm";
 import Comments from "./Comments";
-import { mapState } from "vuex";
 
 export default {
   name: "CommentArea",
@@ -61,14 +61,20 @@ export default {
       required: true,
     },
   },
+  data() {
+    return {
+      comments: [],
+      commentsMeta: null,
+    };
+  },
   methods: {
-    loadData() {
-      this.$store.dispatch("comments/loadComments", {
-        id: this.commentable_id,
-        ...(this.commentsMeta
-          ? { page: this.commentsMeta.current_page + 1 }
-          : {}),
+    loadComments: async function () {
+      const { data } = await CommentsRepository.get(this.$route.params.id, {
+        page: this.commentsMeta?.current_page + 1,
       });
+      const {["data"]: comments, ...commentsMeta} = data;
+      this.comments = [...this.comments, ...comments];
+      this.commentsMeta = commentsMeta;
     },
     storeComment(comment) {
       this.comments.unshift(comment);
@@ -76,10 +82,16 @@ export default {
     },
   },
   computed: {
-    ...mapState("comments", ["comments", "commentsMeta"]),
+    totalComments: function () {
+      try {
+        return this.commentsMeta?.total;
+      } catch(e) {
+        return 0;
+      }
+    }
   },
-  mounted() {
-    this.loadData();
+  created() {
+    this.loadComments();
   },
 };
 </script>

@@ -43,9 +43,8 @@
   </div>
 </template>
 <script>
-// import utils from "@/utils/index";
+import CommentsRepository from "@comments/repositories/CommentsRepository";
 import Loader from "@/components/Spinner/YummyLoader";
-import axios from "axios";
 
 export default {
   name: "CommentForm",
@@ -83,15 +82,13 @@ export default {
 
       // If valid values
       if (!this.errors.length) {
-        await axios
-          .post(process.env.VUE_APP_API + "comments", {
-            commentable_id: this.commentable_id,
-            comment_type: "post",
-            title: "Test",
-            content: this.content,
-            reply_id: this.reply_id,
-          })
-          .then((response) => {
+        await CommentsRepository.store({
+          commentable_id: this.commentable_id,
+          comment_type: "post",
+          title: "Test",
+          content: this.content,
+          reply_id: this.reply_id,
+        }).then((response) => {
             this.content = "";
             if (response.data.success) {
               this.$emit("store-comment", response.data.data);

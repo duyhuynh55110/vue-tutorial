@@ -47,7 +47,9 @@
             <CommentsReply
               v-if="viewReplies.isShow"
               :comments="commentsReply"
+              :commentsMeta="commentsReplyMeta"
               classObj="mt-4"
+              @load-more="loadComments"
             />
           </div>
         </div>
@@ -56,10 +58,7 @@
   </li>
 </template>
 <script>
-// service
-//import Service from "@comments/services/comments.service"
-import axios from "axios";
-
+import CommentsRepository from "@comments/repositories/CommentsRepository";
 import CommentForm from "./CommentForm";
 import moment from "moment";
 
@@ -81,26 +80,27 @@ export default {
         content: "",
       },
       commentsReply: [],
+      commentsReplyMeta: null,
     };
   },
   methods: {
+    async loadComments() {
+      const { data } = await CommentsRepository.get(this.$route.params.id, {
+        page: this.commentsReplyMeta?.current_page + 1,
+        reply_id: this.comment.id,
+      });
+      const {["data"]: comments, ...commentsMeta} = data;
+      this.commentsReply = [...this.commentsReply, ...comments];
+      this.commentsReplyMeta = commentsMeta;
+    },
     changeReplying() {
       this.replying = !this.replying;
     },
-    async loadOrHideCommentsReply() {
+    loadOrHideCommentsReply() {
       this.displayViewReplies(!this.viewReplies.isShow);
 
       if (this.viewReplies.isShow && !this.commentsReply.length) {
-        await axios
-          .get(
-            process.env.VUE_APP_API +
-              "comments/get-comments/" +
-              this.comment.id
-          )
-          .then((response) => {
-            this.commentsReply = [...response.data.data];
-            this.commentsReplyMeta = [];
-          });
+        this.loadComments();
       }
     },
     displayViewReplies(status = false) {

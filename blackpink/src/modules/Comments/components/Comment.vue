@@ -15,12 +15,13 @@
         <p class="mb-1">{{ comment.content }}</p>
 
         <div class="">
-          <a href="#" class="comment-favourite mr-3">
-            <span class="mr-1"><i class="fas fa-heart"></i></span> 32
+          <a href="#" class="comment-favourite">
+            <span class="mr-1"><i class="fas fa-heart"></i></span>
+            {{ comment.likes_count || null }}
           </a>
-          <span class="comment-reply mr-3" href="#" @click="changeReplying"
-            >Reply</span
-          >
+          <span class="comment-reply mr-3" href="#" @click="changeReplying">
+            Reply
+          </span>
           <span class="comment-date">
             {{ moment(comment.created_at).fromNow() }}
           </span>
@@ -89,7 +90,7 @@ export default {
         page: this.commentsReplyMeta?.current_page + 1,
         reply_id: this.comment.id,
       });
-      const {["data"]: comments, ...commentsMeta} = data;
+      const { ["data"]: comments, ...commentsMeta } = data;
       this.commentsReply = [...this.commentsReply, ...comments];
       this.commentsReplyMeta = commentsMeta;
     },

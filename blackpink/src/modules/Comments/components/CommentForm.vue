@@ -46,6 +46,8 @@
 import CommentsRepository from "@comments/repositories/CommentsRepository";
 import Loader from "@/components/Spinner/YummyLoader";
 
+import {POLYMORPHISM_TYPES} from "@/common"
+
 export default {
   name: "CommentForm",
   components: {
@@ -84,7 +86,7 @@ export default {
       if (!this.errors.length) {
         await CommentsRepository.store({
           commentable_id: this.commentable_id,
-          comment_type: "post",
+          commentable_type: POLYMORPHISM_TYPES.post,
           title: "Test",
           content: this.content,
           reply_id: this.reply_id,

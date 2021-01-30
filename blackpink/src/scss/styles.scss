@@ -46,7 +46,7 @@
     width: 100%;
     padding: 0 12px;
     cursor: text;
-    transition: background .3s cubic-bezier(.25,.8,.5,1);
+    transition: background 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
 
     .v-text-field__slot {
       align-items: center;
@@ -113,7 +113,7 @@
         -ms-user-select: none;
         user-select: none;
         cursor: pointer;
-        
+
         &:hover {
           background: $pink_hover;
         }
@@ -159,8 +159,8 @@
 .comment-wrapper {
   margin-bottom: 15px;
   .comment-content {
-    a.comment-favourite, span.comment-reply {
-      color: #b5aec4;
+    a.comment-favourite,span.comment-reply {
+      color: $purple_01;
       font-size: 14px;
       min-width: 40px;
       height: 40px;
@@ -170,17 +170,6 @@
 
       &:hover {
         color: $pink_blackpink;
-      }
-    }
-
-    a {
-      border: 1px solid rgba($gray_01, 0.7);
-      color: $white_01;
-      margin-right: 5px;
-
-      &.active {
-        color: $white_01;
-        background-color: $pink_blackpink;
       }
     }
   }

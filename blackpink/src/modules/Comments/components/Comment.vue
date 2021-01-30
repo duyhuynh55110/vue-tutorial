@@ -15,16 +15,17 @@
         <p class="mb-1">{{ comment.content }}</p>
 
         <div class="">
-          <a href="#" class="comment-favourite">
-            <span class="mr-1"><i class="fas fa-heart"></i></span>
-            {{ comment.likes_count || null }}
-          </a>
-          <span class="comment-reply mr-3" href="#" @click="changeReplying">
-            Reply
-          </span>
-          <span class="comment-date">
-            {{ moment(comment.created_at).fromNow() }}
-          </span>
+          <div class="d-line-flex flex-row">
+            <EmojiButton />
+
+            <span class="comment-reply mr-3" href="#" @click="changeReplying">
+              Reply
+            </span>
+            
+            <span class="comment-date">
+              {{ moment(comment.created_at).fromNow() }}
+            </span>
+          </div>
 
           <!-- Form reply -->
           <div v-if="replying" class="comment-reply">
@@ -61,6 +62,7 @@
 <script>
 import CommentsRepository from "@comments/repositories/CommentsRepository";
 import CommentForm from "./CommentForm";
+import EmojiButton from "@/components/Emoji/EmojiButton"
 import moment from "moment";
 
 export default {
@@ -69,6 +71,7 @@ export default {
     comment: Object,
   },
   components: {
+    EmojiButton,
     CommentForm,
     CommentsReply: () => import("./Comments"),
   },

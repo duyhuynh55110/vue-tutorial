@@ -1,0 +1,136 @@
+@import "@/scss/_var.scss";
+
+$reaction_box_width: 312px;
+$reaction_box_height: 55px;
+$reaction_icon_background: url('~@/assets/facebook_emoji.png');
+$reaction_icon_size: 40px;
+$reaction_icon_background_position: -46px;
+
+$emoji_icon_background_position: -21.5px;
+
+.emoji-btn {
+    color: $purple_01;
+    font-size: 14px;
+    min-width: 40px;
+    line-height: 40px;
+    border: none;
+    cursor: pointer;
+    position: relative;
+
+    &.active {
+      font-size: 13px;
+      line-height: 18px;
+      border-radius: 15px;
+      background: $black_01;
+      padding: 5px 10px;
+      bottom: 2px;
+    }
+
+    &::before {
+      content: ".";
+      opacity: 0;
+      display: block;
+      width: 44px;
+      height: 10px;
+      position: absolute;
+      top: -10px;
+      left: 0;
+    }
+  
+    &:hover {
+      color: $pink_blackpink;
+
+      .reaction-box {
+        opacity: 1;
+  
+        .reaction-icon:hover {
+          // changed here!
+          transform: scale(1.4);
+          transform-origin: bottom;
+  
+          label {
+            visibility: visible;
+          }
+        }
+      }
+    }
+
+    .reaction-box {
+      position: absolute;
+      width: $reaction_box_width;
+      height: $reaction_box_height;
+      background: $black_01;
+      border-radius: 28px;
+      left: -12px;
+      bottom: 40%;
+      z-index: 99;
+      transition: opacity 0s;
+      opacity: 0;
+  
+      .reaction-icon {
+        width: $reaction_icon_size;
+        height: $reaction_icon_size;
+        display: inline-block;
+        background-image: $reaction_icon_background;
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-radius: 20px;
+        margin: 8px -1px 0 8px;
+        text-align: center;
+        &:nth-child(6) {
+          margin-right: 8px;
+        }
+  
+        &.love { background-position: $reaction_icon_background_position;}
+        &.haha { background-position: $reaction_icon_background_position * 2;}
+        &.wow { background-position: $reaction_icon_background_position * 3;}
+        &.sad { background-position: $reaction_icon_background_position * 4;}
+        &.angry { background-position: $reaction_icon_background_position * 5;}
+
+        // Animation
+        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  
+        label {
+          visibility: hidden;
+          padding: 3px 5px 3px 5px;
+          position: relative;
+          top: -35px;
+          border-radius: 4px;
+          height: 50%;
+          font-size: 11px;
+          line-height: 13px;
+          color: #fff;
+          background: $pink_blackpink;
+        }
+      }
+    }
+
+    .emoji-list {
+      text-align: center;
+      .emoji-icon {
+        background: $reaction_icon_background;
+        background-position: 0;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
+        bottom: -1px;
+        &:nth-child(n + 2) {
+          left: -7px;
+        }
+
+        &::before {
+          content: '.';
+          opacity: 0;
+          display: inline-block;
+          width: $reaction_icon_size / 2;
+          height: $reaction_icon_size / 2;
+        }
+        &.like { background-position: 0;}
+        &.love { background-position: $emoji_icon_background_position;}
+        &.haha { background-position: $emoji_icon_background_position * 2;}
+        &.wow { background-position: $emoji_icon_background_position * 3;}
+        &.sad { background-position: $emoji_icon_background_position * 4;}
+        &.angry { background-position: $emoji_icon_background_position * 5;}
+      }
+    }
+}

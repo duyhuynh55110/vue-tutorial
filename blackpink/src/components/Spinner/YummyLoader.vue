@@ -3,7 +3,7 @@
     <div v-if="loading" class="yummy-load"></div>
 </template>
 <script>
-import "./style.scss";
+import "./styles.scss";
 export default {
   name: "YummyLoader",
   props: {

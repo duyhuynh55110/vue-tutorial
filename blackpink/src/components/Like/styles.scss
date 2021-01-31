@@ -1,19 +1,19 @@
 @import "@/scss/_var.scss";
 
-$reaction_box_width: 312px;
+$reaction_box_width: 292px;
 $reaction_box_height: 55px;
 $reaction_icon_background: url('~@/assets/facebook_emoji.png');
 $reaction_icon_size: 40px;
 $reaction_icon_background_position: -46px;
 
-$emoji_icon_background_position: -21.5px;
+$emoji_icon_background_position: -23px;
 
 .emoji-btn {
-    color: $purple_01;
     font-size: 14px;
-    min-width: 40px;
+    min-width: 30px;
     line-height: 40px;
-    border: none;
+    bottom: 2px;
+    color: $purple_01;
     cursor: pointer;
     position: relative;
 
@@ -24,6 +24,7 @@ $emoji_icon_background_position: -21.5px;
       background: $black_01;
       padding: 5px 10px;
       bottom: 2px;
+      min-width: 60px;
     }
 
     &::before {
@@ -41,7 +42,7 @@ $emoji_icon_background_position: -21.5px;
       color: $pink_blackpink;
 
       .reaction-box {
-        opacity: 1;
+        display: block;
   
         .reaction-icon:hover {
           // changed here!
@@ -62,10 +63,10 @@ $emoji_icon_background_position: -21.5px;
       background: $black_01;
       border-radius: 28px;
       left: -12px;
-      bottom: 40%;
+      bottom: 103%;
       z-index: 99;
       transition: opacity 0s;
-      opacity: 0;
+      display: none;
   
       .reaction-icon {
         width: $reaction_icon_size;
@@ -77,6 +78,7 @@ $emoji_icon_background_position: -21.5px;
         border-radius: 20px;
         margin: 8px -1px 0 8px;
         text-align: center;
+
         &:nth-child(6) {
           margin-right: 8px;
         }
@@ -105,18 +107,17 @@ $emoji_icon_background_position: -21.5px;
       }
     }
 
-    .emoji-list {
-      text-align: center;
+    .emoji-icon-list {
+      position: relative;
+      height: 20px;
+
       .emoji-icon {
+        position: absolute;
         background: $reaction_icon_background;
         background-position: 0;
         background-repeat: no-repeat;
         background-size: cover;
-        position: relative;
-        bottom: -1px;
-        &:nth-child(n + 2) {
-          left: -7px;
-        }
+        z-index: 99;
 
         &::before {
           content: '.';
@@ -125,12 +126,17 @@ $emoji_icon_background_position: -21.5px;
           width: $reaction_icon_size / 2;
           height: $reaction_icon_size / 2;
         }
+
         &.like { background-position: 0;}
         &.love { background-position: $emoji_icon_background_position;}
         &.haha { background-position: $emoji_icon_background_position * 2;}
         &.wow { background-position: $emoji_icon_background_position * 3;}
         &.sad { background-position: $emoji_icon_background_position * 4;}
         &.angry { background-position: $emoji_icon_background_position * 5;}
+      }
+
+      .emoji-count {
+        line-height: 20px;
       }
     }
 }

@@ -15,13 +15,22 @@
         <p class="mb-1">{{ comment.content }}</p>
 
         <div class="">
-          <div class="d-line-flex flex-row">
-            <EmojiButton />
+          <div class="d-flex justify-content-start align-items-center">
+            <Like
+              :likeableId="comment.id"
+              likeableType="comment"
+              :likesCount="comment.likes_count"
+              :likesType="comment.likes_type"
+            />
 
-            <span class="comment-reply mr-3" href="#" @click="changeReplying">
+            <span
+              class="comment-reply ml-1 mr-3"
+              href="#"
+              @click="changeReplying"
+            >
               Reply
             </span>
-            
+
             <span class="comment-date">
               {{ moment(comment.created_at).fromNow() }}
             </span>
@@ -60,9 +69,9 @@
   </li>
 </template>
 <script>
-import CommentsRepository from "@comments/repositories/CommentsRepository";
+import commentsService from "@comments/services/comments.service";
 import CommentForm from "./CommentForm";
-import EmojiButton from "@/components/Emoji/EmojiButton"
+import Like from "@/components/Like/Like";
 import moment from "moment";
 
 export default {
@@ -71,7 +80,7 @@ export default {
     comment: Object,
   },
   components: {
-    EmojiButton,
+    Like,
     CommentForm,
     CommentsReply: () => import("./Comments"),
   },
@@ -89,7 +98,7 @@ export default {
   },
   methods: {
     async loadComments() {
-      const { data } = await CommentsRepository.get(this.$route.params.id, {
+      const { data } = await commentsService.get(this.$route.params.id, {
         page: this.commentsReplyMeta?.current_page + 1,
         reply_id: this.comment.id,
       });

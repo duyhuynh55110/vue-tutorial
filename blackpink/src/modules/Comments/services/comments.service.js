@@ -1,8 +1,7 @@
 import axios from "axios"
 
 const url = process.env.VUE_APP_API + "comments";
-
-class CommentsRepository {
+class CommentsService {
     // Add newly comment
     store(comment) {
         return axios.post(url, comment);
@@ -19,4 +18,4 @@ class CommentsRepository {
     }
 }
 
-export default new CommentsRepository();
+export default new CommentsService();

@@ -43,7 +43,7 @@
   </div>
 </template>
 <script>
-import CommentsRepository from "@comments/repositories/CommentsRepository";
+import commentsService from "@comments/services/comments.service";
 import Loader from "@/components/Spinner/YummyLoader";
 
 import {POLYMORPHISM_TYPES} from "@/common"
@@ -84,7 +84,7 @@ export default {
 
       // If valid values
       if (!this.errors.length) {
-        await CommentsRepository.store({
+        await commentsService.store({
           commentable_id: this.commentable_id,
           commentable_type: POLYMORPHISM_TYPES.post,
           title: "Test",

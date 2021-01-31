@@ -46,7 +46,7 @@
 </template>
 
 <script>
-import CommentsRepository from "@comments/repositories/CommentsRepository";
+import commentsService from "@comments/services/comments.service";
 import CommentForm from "./CommentForm";
 import Comments from "./Comments";
 
@@ -69,7 +69,7 @@ export default {
   },
   methods: {
     loadComments: async function () {
-      const { data } = await CommentsRepository.get(this.$route.params.id, {
+      const { data } = await commentsService.get(this.$route.params.id, {
         page: this.commentsMeta?.current_page + 1,
       });
       const {["data"]: comments, ...commentsMeta} = data;

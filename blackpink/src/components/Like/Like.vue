@@ -5,9 +5,9 @@
       <span v-if="!getLikesCount"> Like </span>
       <div v-else class="emoji-icon-list d-flex" ref="emojiList">
         <span
-          v-for="(emojiIcon, i) in emojiIcons"
+          v-for="(type, i) in mutableLikesType"
           :key="i"
-          :class="['emoji-icon', emojiIcon]"
+          :class="['emoji-icon', type]"
         ></span>
         <span class="emoji-count ml-auto"> {{ getLikesCount }} </span>
       </div>
@@ -57,19 +57,17 @@ export default {
     return {
       LIKES_TYPES,
       mutableLikesCount: this.likesCount,
+      mutableLikesType: [],
     };
   },
   computed: {
     getLikesCount: function() {
       return this.mutableLikesCount;
     },
-    emojiIcons: function () {
-      return this.likesType.split(",");
-    },
     emojiBtnClass: function () {
       return {
         "emoji-btn mr-2": true,
-        active: this.likesCount ?? true,
+        active: this.mutableLikesCount ?? true,
       };
     },
     emojiSource: function () {
@@ -84,9 +82,17 @@ export default {
         type: type,
       }).then((response) => {
         if (response.status == 200) {
+          response = response.data.data;
           this.mutableLikesCount++;
+
+          if(!this.mutableLikesType.includes(response.type)) {
+            this.mutableLikesType.push(response.type);
+          }
         }
       });
+    },
+    setLikesTypes: function () {
+      this.mutableLikesType = this.likesType? this.likesType.split(","): [];
     },
     setEmojiBtnWidth: function () {
       let emojiIcon = $(this.$refs.emojiList).find(".emoji-icon");
@@ -101,7 +107,7 @@ export default {
     },
   },
   mounted() {
-    this.setEmojiBtnWidth();
+    this.setLikesTypes();
   },
   updated() {
     this.setEmojiBtnWidth();

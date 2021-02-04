@@ -1,20 +1,21 @@
 import Vue from 'vue'
-import Router from 'vue-router'
+import VueRouter from 'vue-router'
 import Home from '@/modules/Home/index'
 
 // Posts
 import PostSingle from "@posts/containers/Single"
 import Posts from '@posts/containers/index'
 
-Vue.use(Router)
+Vue.use(VueRouter)
 
-export default new Router({
+export default new VueRouter({
   mode:'history',
   routes: [
     {
       path: '/',
       name: 'Home',
-      component: Home
+      component: Home,
+      exact: true,
     },
     {
       path: '/posts',

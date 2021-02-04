@@ -171,9 +171,9 @@
   </div>
 </template>
 <script>
-import BreadCumb from "@breadCumb/components/index.vue";
-import BlogSideBar from "@blogSideBar/components/index.vue";
-import RelatedPostsArea from "@posts/components/RelatedPostsArea.vue";
+import BreadCumb from "@layouts/components/BreadCumb";
+import BlogSideBar from "@layouts/components/BlogSideBar";
+import RelatedPostsArea from "@posts/components/RelatedPostsArea";
 import CommentsArea from "@comments/components/CommentsArea";
 
 import moment from "moment";

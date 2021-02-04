@@ -24,7 +24,7 @@
 <script>
     import { mapState } from "vuex"
     import Post from './Post'
-    import BlogSideBar from "@blogSideBar/components/index"
+    import BlogSideBar from "@layouts/components/BlogSideBar";
 
     export default {
         name: "PostsArea",

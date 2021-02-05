@@ -80,10 +80,11 @@ export default {
       return `<${this.headlineType} class="post-headline"> ${this.post.title} </${this.headlineType}>`;
     },
     flexClass() {
-      let defaultClass = "single-post wow ";
-      return this.flex
-        ? defaultClass + "list-blog fadeInUpBig d-sm-flex"
-        : defaultClass + "fadeInUp";
+      return {
+        "single-post wow": true,
+        "list-blog fadeInUpBig d-sm-flex": this.flex,
+        "fadeInUp": !this.flex,
+      };
     },
     delayTime() {
       return this.grid ? ".2s" : ".6s";

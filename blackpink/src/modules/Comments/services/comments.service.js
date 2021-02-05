@@ -1,15 +1,15 @@
-import axios from "axios"
+import service from "@services/service"
 
-const url = process.env.VUE_APP_API + "comments";
+const resource = "comments";
 class CommentsService {
     // Add newly comment
     store(comment) {
-        return axios.post(url, comment);
+        return service.post(resource, comment);
     }
 
     // load comments data & paginate
     get(id, { page = 1, reply_id = null } = {}) {
-        return axios.get(url + "/get-comments/" + id, {
+        return service.get(service + '/' + id, {
             params: {
                 page: page,
                 ...(reply_id) && {reply_id: reply_id}

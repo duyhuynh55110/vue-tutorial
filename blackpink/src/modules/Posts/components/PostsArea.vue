@@ -1,42 +1,50 @@
 <template>
-    <section class="blog_area section_padding_0_80">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-12 col-lg-8">
-                        <div class="row">
-                            <div v-for="(post, index) in posts" :key="index" :class="(index > 0 && index < 5)? 'col-12 col-md-6': 'col-12'">
-                                <Post 
-                                    :key="post.id" 
-                                    :post="post"
-                                    :flex="(index >= 5)? true: false"
-                                    :text="index" /> 
-                            </div>
-
-                        </div>
-                    </div>   
-
-                     <!-- Blog Sidebar -->
-                    <BlogSideBar></BlogSideBar>
-                </div>
-            </div>
-    </section>
+  <div class="row">
+    <div
+      v-for="(post, index) in posts"
+      :key="index"
+      v-bind="bindPostCol"
+      ref="postCol"
+    >
+      <Post
+        :key="post.id"
+        :post="post"
+      />
+    </div>
+  </div>
 </template>
 <script>
-    import { mapState } from "vuex"
-    import Post from './Post'
-    import BlogSideBar from "@layouts/components/BlogSideBar";
+import { mapState } from "vuex"
+import Post from "./Post"
 
-    export default {
-        name: "PostsArea",
-        components: {
-            Post,
-            BlogSideBar
-        },
-        computed: {
-            ...mapState('posts', ['posts']),
-        },
-        mounted() {
-            this.$store.dispatch('posts/loadPosts');
-        }
+export default {
+  name: "PostsArea",
+  props: {
+      postCol: {
+          type: String,
+          default: "col-12 col-md-6",
+      },
+      postFlex: {
+          type: Boolean,
+          default: false,
+      }
+  },
+  components: {
+    Post,
+  },
+  computed: {
+    ...mapState("posts", ["posts"]),
+    bindPostCol: function() {
+      console.log(this.content);
+      if(this.$route.name == "Home") {
+        return { class: 'col-12' }
+      }
+      
+      return this.postCol;
     }
+  },
+  mounted() {
+    this.$store.dispatch("posts/loadPosts");
+  },
+};
 </script>

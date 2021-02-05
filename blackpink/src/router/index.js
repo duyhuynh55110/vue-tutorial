@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '@/modules/Home/index'
+import Home from '@/modules/Home/containers/index'
 
 // Posts
+import PostArchive from "@posts/containers/Archive"
 import PostSingle from "@posts/containers/Single"
 import Posts from '@posts/containers/index'
 
@@ -26,6 +27,11 @@ export default new VueRouter({
           path: ":id",
           name: "PostSingle",
           component: PostSingle,
+        },
+        {
+          path: "/",
+          name: "PostArchive",
+          component: PostArchive,
         },
       ]
     }

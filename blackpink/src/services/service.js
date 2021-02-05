@@ -1,8 +1,6 @@
 import axios from 'axios'
 
-const baseUrl = process.env.VUE_APP_API 
-
 export default axios.create({
-    baseUrl,
+    baseURL: process.env.VUE_APP_API,
     // header: {'Authorization': 'Bearer ...'}
 })

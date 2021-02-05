@@ -70,7 +70,7 @@ export default {
   methods: {
     loadComments: async function () {
       const { data } = await commentsService.get(this.$route.params.id, {
-        page: this.commentsMeta?.current_page + 1,
+        page: this.commentsMeta?.current_page + 1 || 1,
       });
       const {["data"]: comments, ...commentsMeta} = data;
       this.comments = [...this.comments, ...comments];

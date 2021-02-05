@@ -1,11 +1,9 @@
-import axios from "axios";
+import service from "@services/service"
+const resource = "likes";
 
-const url = process.env.VUE_APP_API + "likes";
-class LikeService {
+export default {
     // store newly like to database
     storeLike(like) {
-        return axios.post(url, like);
+        return service.post(resource, like);
     }
 }
-
-export default new LikeService();

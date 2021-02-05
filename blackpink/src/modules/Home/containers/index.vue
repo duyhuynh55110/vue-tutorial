@@ -15,7 +15,7 @@
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-12 col-lg-8">
-            <Posts />
+            <Posts :posts="posts" />
           </div>
 
           <!-- Blog Sidebar -->
@@ -30,6 +30,8 @@
 </template>
 
 <script>
+import postsService from "@posts/services/posts.service";
+
 import BlogSideBar from "@layouts/components/BlogSideBar";
 import SlidersArea from "@posts/components/SlidersArea";
 import CategoriesArea from "@categories/components/CategoriesArea";
@@ -45,5 +47,19 @@ export default {
     Posts,
     InstagramArea,
   },
+  data() {
+    return {
+      posts: [],
+    }
+  },
+  methods: {
+    loadPosts: async function() {
+      const {["data"]: response} = await postsService.get();
+      this.posts = response.data;
+    }
+  },
+  mounted() {
+      this.loadPosts();
+  }
 };
 </script>

@@ -91,7 +91,7 @@
                 <ul class="navbar-nav" id="yummy-nav">
                   <router-link
                     v-for="route in $router.options.routes"
-                    :to="{ name: route.name }"
+                    :to="{ path: route.path }"
                     tag="li"
                     active-class="active"
                     class="nav-item"

@@ -30,7 +30,7 @@ export default new VueRouter({
         },
         {
           path: "/",
-          name: "PostArchive",
+          name: "PostsArchive",
           component: PostArchive,
         },
       ]

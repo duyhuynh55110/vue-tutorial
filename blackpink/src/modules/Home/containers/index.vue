@@ -30,13 +30,15 @@
 </template>
 
 <script>
-import postsService from "@posts/services/posts.service";
+// import postsService from "@posts/services/posts.service";
 
 import BlogSideBar from "@layouts/components/BlogSideBar";
 import SlidersArea from "@posts/components/SlidersArea";
 import CategoriesArea from "@categories/components/CategoriesArea";
 import InstagramArea from "@instagram/components/Area";
+
 import Posts from "@posts/components/Posts";
+import { mapState } from "vuex";
 
 export default {
   name: "Home",
@@ -44,22 +46,20 @@ export default {
     BlogSideBar,
     SlidersArea,
     CategoriesArea,
-    Posts,
     InstagramArea,
-  },
-  data() {
-    return {
-      posts: [],
-    }
+    Posts,
   },
   methods: {
-    loadPosts: async function() {
-      const {["data"]: response} = await postsService.get();
-      this.posts = response.data;
-    }
+    // loadPosts: async function () {
+    //   const { ["data"]: response } = await postsService.get();
+    //   this.posts = response.data;
+    // },
+  },
+  computed: {
+    ...mapState("posts", ["posts"]),
   },
   mounted() {
-      this.loadPosts();
-  }
+    this.$store.dispatch("posts/loadPosts");
+  },
 };
 </script>

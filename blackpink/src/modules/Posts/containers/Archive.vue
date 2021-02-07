@@ -9,18 +9,26 @@
 </template>
 <script>
 import Posts from "@posts/components/Posts";
-import { mapState } from "vuex";
+import postsService from "@posts/services/posts.service";
 
 export default {
   name: "PostsArchive",
   components: {
     Posts
   },
-  computed: {
-    ...mapState("posts", ["posts"]),
+  data() {
+    return {
+      posts: [],
+    };
   },
-  async mounted() {
-    await this.$store.dispatch("posts/loadPosts");
+  methods: {
+    async loadPosts() {
+      const {data: response} = await postsService.get({page: 1});
+      this.posts = response.data;
+    }
+  },
+  created() {
+      this.loadPosts();
   },
 };
 </script>

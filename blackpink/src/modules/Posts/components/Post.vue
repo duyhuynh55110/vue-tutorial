@@ -9,14 +9,9 @@
     <div class="post-content">
       <div class="post-meta d-flex">
         <div class="post-author-date-area d-flex">
-          <!-- Post Author -->
-          <div class="post-author">
-            <a href="#"> By Marian </a>
-          </div>
-
           <!-- Post Date -->
           <div class="post-date">
-            <a href="#"> {{ moment(post.created_at).fromNow() }} </a>
+            <router-link :to="detail()"> {{ moment(post.created_at).fromNow() }} </router-link>
           </div>
         </div>
 
@@ -24,15 +19,15 @@
         <div v-if="shareArea === true" class="post-comment-share-area d-flex">
           <!-- Post Favourite -->
           <div class="post-favourite">
-            <a href="#"><i class="fa fa-heart" aria-hidden="true"></i> 10 </a>
+            <router-link :to="detail()"><i class="fa fa-heart" aria-hidden="true"></i> {{ post.views_count }} </router-link>
           </div>
           <!-- Post Comments -->
           <div class="post-comments">
-            <a href="#"><i class="fa fa-comment" aria-hidden="true"></i> 12 </a>
+            <router-link :to="detail()"><i class="fa fa-comment" aria-hidden="true"></i> {{ post.comments_count }} </router-link>
           </div>
           <!-- Post Share -->
           <div class="post-share">
-            <a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i></a>
+            <router-link :to="detail()"><i class="fa fa-share-alt" aria-hidden="true"></i></router-link>
           </div>
         </div>
       </div>
@@ -40,9 +35,9 @@
         <v-runtime-template :template="headlineTitle"></v-runtime-template>
       </router-link>
       <p>{{ post.slug }}</p>
-      <a href="#" class="read-more" v-if="continueReading === true">
+      <router-link class="read-more" v-if="continueReading === true">
         Continue Reading..
-      </a>
+      </router-link>
     </div>
   </div>
 </template>
@@ -90,5 +85,10 @@ export default {
       return this.grid ? ".2s" : ".6s";
     },
   },
+  methods: {
+    detail() {
+      return { name: 'PostSingle', params: { id: this.post.id } };
+    }
+  }
 };
 </script>

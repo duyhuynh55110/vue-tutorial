@@ -1,6 +1,8 @@
 import axios from 'axios'
 
-const posts = {
+const baseUrl = process.env.VUE_APP_API + "posts/";
+
+export default {
   namespaced: true,
   state: {
     post: null,
@@ -16,38 +18,45 @@ const posts = {
       state.post = post;
     },
     setPosts: (state, posts) => {
-        state.posts = posts;
+      state.posts = posts;
     },
     setPopularPosts: (state, popularPosts) => {
-        state.popularPosts = popularPosts;
+      state.popularPosts = popularPosts;
     }
   },
   actions: {
     loadRelatedPosts: ({ commit }, id) => {
-        axios.get(process.env.VUE_APP_API + "posts/get-related-posts/" + id)
+      axios.get(baseUrl + "related-posts/" + id)
         .then(response => {
           commit('setRelatedPosts', response.data.data);
         });
     },
     loadPost: ({ commit }, id) => {
-        axios.get(process.env.VUE_APP_API + "posts/" + id)
+      axios.get(baseUrl + id)
         .then(response => {
-          commit('setPost', response.data);
+          commit('setPost', response.data.data);
         })
     },
     loadPosts: ({ commit }) => {
-        axios.get(process.env.VUE_APP_API + "posts")
+      axios.get(baseUrl, {
+        params: {
+          sort: "-created_at"
+        }
+      })
         .then(response => {
-            commit('setPosts', response.data.data);
+          commit('setPosts', response.data.data);
         });
     },
     loadPopularPosts: ({ commit }) => {
-        axios.get(process.env.VUE_APP_API + "posts/get-popular-posts")
+      axios.get(baseUrl, {
+        params: {
+          sort: "-view_count",
+          limit: 6,
+        }
+      })
         .then(response => {
-            commit('setPopularPosts', response.data);
+          commit('setPopularPosts', response.data.data);
         });
     }
   },
 }
-
-export default posts

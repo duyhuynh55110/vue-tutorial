@@ -50,7 +50,7 @@ export default {
     loadPopularPosts: ({ commit }) => {
       axios.get(baseUrl, {
         params: {
-          sort: "-view_count",
+          sort: "-views_count",
           limit: 6,
         }
       })

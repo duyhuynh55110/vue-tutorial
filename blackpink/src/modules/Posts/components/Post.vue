@@ -82,7 +82,7 @@ export default {
       };
     },
     delayTime() {
-      return this.grid ? ".2s" : ".6s";
+      return !this.flex ? ".2s" : ".6s";
     },
   },
   methods: {

@@ -1,5 +1,5 @@
 <template>
-  <div class="post-single">                 
+  <div class="post-single">
     <!-- Breadcumb -->
     <BreadCumb title="Post Detail" />
 
@@ -19,12 +19,9 @@
 
                   <!-- Post Content -->
                   <div class="post-content">
+                    <!-- Meta -->
                     <div class="post-meta d-flex">
                       <div class="post-author-date-area d-flex">
-                        <!-- Post Author -->
-                        <div class="post-author">
-                          <a href="#">By Marian</a>
-                        </div>
                         <!-- Post Date -->
                         <div class="post-date">
                           <a v-if="post" href="#">
@@ -56,7 +53,6 @@
                         </div>
                       </div>
                     </div>
-                    <a href="#"> </a>
                     <p>
                       Tiusmod tempor incididunt ut labore et dolore magna
                       aliqua. Ut enim ad minim veniam, quis nostrud exercitation

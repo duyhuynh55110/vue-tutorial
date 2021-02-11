@@ -11,4 +11,7 @@ const LIKES_TYPES = [
     "angry",
 ]
 
-export { POLYMORPHISM_TYPES, LIKES_TYPES }
+const PER_PAGE_10 = 10;
+const PER_PAGE_5 = 5;
+
+export { POLYMORPHISM_TYPES, LIKES_TYPES, PER_PAGE_10, PER_PAGE_5 }

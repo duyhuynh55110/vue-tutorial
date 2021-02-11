@@ -56,7 +56,7 @@
 
             <!-- Comments Reply -->
             <CommentsReply
-              v-if="viewReplies.isShow"
+              v-if="viewReplies.showing"
               :comments="commentsReply"
               :commentsMeta="commentsReplyMeta"
               classObj="mt-4"
@@ -89,7 +89,7 @@ export default {
       moment: moment,
       replying: false,
       viewReplies: {
-        isShow: false,
+        showing: false,
         content: "",
       },
       commentsReply: [],
@@ -110,23 +110,23 @@ export default {
       this.replying = !this.replying;
     },
     loadOrHideCommentsReply() {
-      this.displayViewReplies(!this.viewReplies.isShow);
+      this.displayViewReplies(!this.viewReplies.showing);
 
-      if (this.viewReplies.isShow && !this.commentsReply.length) {
+      if (this.viewReplies.showing && !this.commentsReply.length) {
         this.loadComments();
       }
     },
     displayViewReplies(status = false) {
       try {
         this.viewReplies = {
-          isShow: status,
+          showing: status,
           content: !status
             ? "View " + this.comment.replies_count + " replies"
             : "Hide replies",
         };
       } catch (e) {
         this.viewReplies = {
-          isShow: false,
+          showing: false,
           content: "",
         };
       }

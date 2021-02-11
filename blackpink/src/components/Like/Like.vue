@@ -17,7 +17,7 @@
         <div
           v-for="like_type in LIKES_TYPES"
           :key="like_type"
-          :class="['reaction-icon', like_type]"
+          :class="['reaction-icon', (like_type != 'wow')? like_type: 'wow2']"
           @click="storeLike(like_type)"
         >
           <label class="text-capitalize"> {{ like_type }} </label>
@@ -102,8 +102,11 @@ export default {
         $(this).css("z-index", 99 - $(this).index());
       });
 
-      // lech 15 so vs goc => tong emoji icon * 15px + 15px phan tu dau khong lech + 25px emoji-count + 5px phan tu dau lech
-      this.$refs.emojiBtn.style.width = emojiIcon.length * 15 + 45 + "px";
+      // 15px phan tu dau khong lech + (35 || 25)px emoji-count + 5px phan tu dau lech
+      let space = (this.mutableLikesCount.toString().length > 2)? 55: 45;
+
+      // lech 15 so vs goc => tong emoji icon * 15px + space
+      this.$refs.emojiBtn.style.width = emojiIcon.length * 15 + space + "px";
     },
   },
   mounted() {

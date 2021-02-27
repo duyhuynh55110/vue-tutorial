@@ -23,13 +23,15 @@
               :likesType="comment.likes_type"
             />
 
-            <span
-              class="comment-reply ml-1 mr-3"
-              href="#"
-              @click="changeReplying"
-            >
+            <div>
+              <span
+                      class="comment-reply ml-1 mr-3"
+                      href="#"
+                      @click="changeReplying"
+              >
               Reply
             </span>
+            </div>
 
             <span class="comment-date">
               {{ moment(comment.created_at).fromNow() }}
@@ -49,7 +51,7 @@
           <!-- Comments Reply -->
           <div v-if="comment.replies_count" class="replies-area">
             <!-- Show or hide -->
-            <div @click="loadOrHideCommentsReply" class="view-replies">
+            <div @click="loadOrHideCommentsReply" class="view-replies mt-1">
               <span class="icon mr-2"> <i class="fas fa-sort-down"></i> </span>
               {{ this.viewReplies.content }}
             </div>

@@ -11,8 +11,7 @@ $emoji_icon_background_position: -23px;
 .emoji-btn {
     font-size: 14px;
     min-width: 30px;
-    line-height: 40px;
-    bottom: 2px;
+    line-height: 35px;
     color: $purple_01;
     cursor: pointer;
     position: relative;
@@ -23,7 +22,6 @@ $emoji_icon_background_position: -23px;
       border-radius: 15px;
       background: $black_01;
       padding: 5px 10px;
-      bottom: 2px;
       min-width: 60px;
     }
 

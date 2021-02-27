@@ -1,7 +1,17 @@
 <template>
   <div class="post-single">
     <!-- Breadcumb -->
-    <BreadCumb title="Post Detail" />
+    <BreadCumb :breadcumb="[
+      {
+        name: 'Posts',
+        path: '/posts',
+      },
+       {
+        name: 'PostsSingle',
+        path: $router.currentRoute.path,
+        active: true,
+      },
+    ]" />
 
     <!-- Post Single -->
     <section class="single_blog_area section_padding_80">

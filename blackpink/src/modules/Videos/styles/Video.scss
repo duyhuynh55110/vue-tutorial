@@ -1,0 +1,51 @@
+@import '@/scss/_var.scss';
+
+.video {
+  .video-thumb {
+    position: relative;
+    width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+
+    img {
+      border-radius: $border-radius-10;
+    }
+
+    .video-times {
+      font-size: $font-size-small;
+      position: absolute;
+      border-radius: 5px;
+      bottom: 10px;
+      right: 10px;
+      padding: 5px;
+      background: #000;
+      color: $white_01;
+    }
+  }
+  .video-meta {
+    color: $gray_01;
+
+    .video-author {
+      width: 100%;
+
+      .video-author-title {
+        font-size: 14px;
+        color: $purple_01;
+      }
+    }
+
+    .video-date, .video-views {
+      font-size: 12px;
+      margin-right: 10px;
+    }
+  }
+  .video-title {
+    a {
+      color: $white_01;
+
+      &:hover {
+        color: $pink_blackpink;
+      }
+    }
+  }
+}

@@ -34,10 +34,7 @@
       <router-link :to="{ name: 'PostSingle', params: { id: post.id } }">
         <v-runtime-template :template="headlineTitle"></v-runtime-template>
       </router-link>
-      <p>{{ post.slug }}</p>
-      <router-link class="read-more" v-if="continueReading === true">
-        Continue Reading..
-      </router-link>
+      <p v-if="flex">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</p>
     </div>
   </div>
 </template>

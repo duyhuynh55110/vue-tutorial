@@ -1,0 +1,53 @@
+@import '@/scss/_var.scss';
+
+.videos-trending-area {
+  .videos-trending-filter {
+    background: $black_02;
+
+    .video-filter {
+      text-align: center;
+      color: $purple_01;
+      flex-grow: 1;
+      cursor: pointer;
+
+      &:not(:last-child) {
+        border-right: 1px solid $purple_01;
+      }
+
+      &:hover {
+        color: $black_02;
+        background: $purple_01;
+      }
+    }
+  }
+}
+.video-trending {
+  position: relative;
+  border-radius: $border-radius-10;
+  overflow: hidden;
+
+  .video-thumb {
+    position: relative;
+    width: 100%;
+  }
+
+  .video-meta {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to bottom, transparent 0%, black 100%);
+
+    .video-title {
+      font-size: 16px;
+      color: $purple_01;
+    }
+
+    .video-inform {
+      span {
+        font-size: 13px;
+        color: $gray_01;
+      }
+    }
+  }
+}

@@ -1,5 +1,15 @@
 <template>
   <div class="posts-archive">
+    <!-- Breadcumb -->
+    <BreadCumb
+      :breadcrumb="[
+        {
+          name: 'Posts',
+          path: '/posts',
+        },
+      ]"
+    />
+
     <section class="archive-area section_padding_80">
       <div ref="postsList" class="container">
         <Posts :posts="posts" />
@@ -11,6 +21,7 @@
 <script>
 import postsService from "@posts/services/posts.service";
 
+import BreadCumb from "@layouts/components/BreadCumb";
 import Posts from "@posts/components/Posts";
 import Loader from "@/components/Spinner/YummyLoader";
 
@@ -21,6 +32,7 @@ export default {
   components: {
     Posts,
     Loader,
+    BreadCumb
   },
   data() {
     return {
@@ -45,8 +57,8 @@ export default {
         let bottomOfWindow =
           document.documentElement.scrollTop + window.innerHeight ===
           document.documentElement.offsetHeight;
-  
-        if (this.postsMeta.last_page > this.postsMeta.current_page) {
+
+        if (this.postsMeta?.last_page > this.postsMeta.current_page) {
           if (bottomOfWindow) {
             this.loading = true;
             await this.loadPosts();

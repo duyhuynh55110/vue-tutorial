@@ -1,10 +1,10 @@
 <template>
-    <div class="posts-main">
+    <div class="videos-main">
         <router-view></router-view>
     </div>
 </template>
 <script>
     export default {
-        name: "PostsMain",
+        name: "VideosMain",
     }
 </script>

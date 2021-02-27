@@ -1,5 +1,5 @@
 <template>
-  <div class="emoji-area d-inline-flex">
+  <div class="emoji-area d-inline-flex mr-1">
     <div :class="emojiBtnClass" ref="emojiBtn">
       <!-- Reaction Like || Emoji list & count-->
       <span v-if="!getLikesCount"> Like </span>
@@ -66,7 +66,7 @@ export default {
     },
     emojiBtnClass: function () {
       return {
-        "emoji-btn mr-2": true,
+        "emoji-btn": true,
         active: this.mutableLikesCount ?? true,
       };
     },

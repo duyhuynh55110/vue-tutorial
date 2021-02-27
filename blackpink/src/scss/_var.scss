@@ -18,6 +18,7 @@ $pink_hover: #ef839f;
 // Black
 $black: #000;
 $black_01: #464a4e;
+$black_02: #333333;
 $black_rgb: rgba(0, 0, 0, 1);
 
 // Gray
@@ -32,3 +33,35 @@ $purple_01: #b5aec4;
 
 // Transparent
 $transparent: rgba(255, 0, 0, 0);
+
+// font-size
+$font-size-small: 12px;
+
+// border-radius
+$border-radius-5: 5px;
+$border-radius-10: 10px;
+$border-radius-15: 15px;
+$border-radius-20: 20px;
+
+// overflow ellipsis on n lines
+.ellipsis {
+  white-space: nowrap;
+  display:inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  &.five-lines {
+    -webkit-line-clamp: 5;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+  }
+
+  &.two-lines {
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+  }
+}
+

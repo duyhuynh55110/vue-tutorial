@@ -13,9 +13,10 @@ module.exports = {
             "@instagram": path.resolve(__dirname, 'src/modules/Instagram/'),
             "@layouts": path.resolve(__dirname, 'src/modules/Layouts/'),
             "@posts": path.resolve(__dirname, 'src/modules/Posts/'),
-
+            "@videos": path.resolve(__dirname, 'src/modules/Videos/'),
+            "@discussions": path.resolve(__dirname, 'src/modules/Discussions/'),
           },
-          extensions: ['*', '.js', '.vue', '.json']
+          extensions: ['*', '.js', '.vue', '.json', '.scss']
         }
       }
 };

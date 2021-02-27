@@ -1,0 +1,43 @@
+@import "@/scss/_var";
+
+$background_discussion: $black_02;
+$border_discussion: 1px solid $black_01;
+
+.discussion {
+  background: $background_discussion;
+  border: $border-discussion;
+
+  .discussion-header {
+    .discussion-thumb {
+      img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+      }
+    }
+    .discussion-inform {
+      p {
+        font-size: 15px;
+        color: $white_01;
+      }
+      span {
+        font-size: 11px;
+        color: $purple_01;
+      }
+    }
+  }
+  .discussion-body {
+    p {
+      font-size: 13px;
+    }
+    .discussion-img {
+      border-radius: 2px;
+    }
+  }
+  .discussion-footer {
+    .comment-count {
+      color: $purple_01;
+      font-size: 14px;
+    }
+  }
+}

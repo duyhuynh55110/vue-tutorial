@@ -9,6 +9,7 @@ import Posts from '@posts/containers'
 
 // Videos
 import VideosArchive from "@videos/containers/Archive.vue"
+import VideoSingle from "@videos/containers/Single"
 import Videos from '@videos/containers'
 
 // Discussions
@@ -48,11 +49,11 @@ export default new VueRouter({
             name: 'Videos',
             component: Videos,
             children: [
-                // {
-                //   path: ":id",
-                //   name: "PostSingle",
-                //   component: PostSingle,
-                // },
+                {
+                  path: ":id",
+                  name: "VideoSingle",
+                  component: VideoSingle,
+                },
                 {
                     path: "/",
                     name: "VideosArchive",

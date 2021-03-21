@@ -1,7 +1,7 @@
 <template>
   <div class="post-single">
-    <!-- Breadcumb -->
-    <BreadCumb :breadcumb="[
+    <!-- BreadCrumb -->
+    <BreadCrumb :breadcrumb="[
       {
         name: 'Posts',
         path: '/posts',
@@ -177,7 +177,7 @@
   </div>
 </template>
 <script>
-import BreadCumb from "@layouts/components/BreadCumb";
+import { BreadCrumb } from "@layouts/components";
 import BlogSideBar from "@layouts/components/BlogSideBar";
 import RelatedPostsArea from "@posts/components/RelatedPostsArea";
 import CommentsArea from "@comments/components/CommentsArea";
@@ -189,7 +189,7 @@ export default {
   name: "PostSingle",
   components: {
     BlogSideBar,
-    BreadCumb,
+    BreadCrumb,
     RelatedPostsArea,
     CommentsArea,
   },

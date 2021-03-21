@@ -36,7 +36,7 @@
     </div>
 </template>
 <script>
-    import BreadCrumb from "@layouts/components/BreadCumb";
+    import { BreadCrumb } from "@layouts/components";
     import Discussion from "@discussions/components/Discussion";
 
     export default {

@@ -1,7 +1,7 @@
 <template>
   <div class="posts-archive">
-    <!-- Breadcumb -->
-    <BreadCumb
+    <!-- BreadCrumb -->
+    <BreadCrumb
       :breadcrumb="[
         {
           name: 'Posts',
@@ -21,7 +21,7 @@
 <script>
 import postsService from "@posts/services/posts.service";
 
-import BreadCumb from "@layouts/components/BreadCumb";
+import { BreadCrumb } from "@layouts/components";
 import Posts from "@posts/components/Posts";
 import Loader from "@/components/Spinner/YummyLoader";
 
@@ -32,7 +32,7 @@ export default {
   components: {
     Posts,
     Loader,
-    BreadCumb
+    BreadCrumb
   },
   data() {
     return {

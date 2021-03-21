@@ -95,8 +95,8 @@
     import "@videos/styles"
 
     import Title from "@/components/Title/Title"
-    import BreadCrumb from "@layouts/components/BreadCumb";
-    import Video from "@videos/components/Video"
+    import { BreadCrumb } from "@layouts/components";
+    import { Video } from "@videos/components"
 
     export default {
         name: "VideosArchive",

@@ -16,10 +16,17 @@
                         </div>
                 </div>
                 <div class="col-md-3">
-                    <div style="background:red; width:100%"> 
-                        <a class="title">
+                    <div class="video-inform"> 
+                        <a class="video-title">
                             MTV Game Awards GraphicPackage The Best Of year 2018
                         </a>
+                        <div class="video-meta my-1 d-flex justify-content-between">
+                            <div class="item-meta"> 6,000,000 views </div>
+                            <div class="item-meta"> 3 days ago </div>
+                        </div>
+                        <div class="video-content mt-4">
+                            Chào ae, việc quyết định xem có nên quay hay không nên quay 1 banner nó phụ thuộc vào rất nhiều yếu tố, thậm chí hứng lên thì quay thôi, biết đâu vận may tới, trong video tôi sẽ chia sẻ 1 vài lý do chính có tốt và không tốt cho ae quyết định xem có nên quay banner Childe hay không, mời anh em 
+                        </div>
                     </div>
                 </div>
             </div>
@@ -31,17 +38,33 @@
         name: "VideoSingle",
     }
 </script>
-<style scoped>
+<style lang="scss" scoped>
+@import '@/scss/_var.scss';
+
 .video-container {
     position: relative;
     padding-bottom: 56.25%; /* 16:9 */
     height: 0;
+    iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
 }
-.video-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+
+.video-inform {
+    .video-title {
+        font-size: 1.4em;
+        color: $white;
+    }
+    .video-meta .item-meta {
+        color: $pink_blackpink;
+        font-size: 13px;
+    }
+    .video-content {
+        color: $purple_01;
+    }
 }
 </style>

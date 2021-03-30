@@ -31,7 +31,7 @@
     </div>
 </template>
 <script>
-    import "@videos/styles/Video.scss"
+    import "../Video/styles.scss"
 
     export default {
         name: "Video",

@@ -1,0 +1,28 @@
+@import '@/scss/_var.scss';
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+    iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.video-inform {
+    >a.video-title {
+        font-size: 1.4em;
+        color: $white;
+    }
+    .video-meta .item-meta {
+        color: $pink_blackpink;
+        font-size: 13px;
+    }
+    .video-content {
+        color: $purple_01;
+    }
+}

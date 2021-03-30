@@ -4,7 +4,7 @@
     </div>
 </template>
 <script>
-    import Video from "./Video"
+    import { Video } from "@videos/components"
 
     export default {
         name: "Videos",

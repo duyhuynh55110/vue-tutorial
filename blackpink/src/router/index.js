@@ -3,17 +3,17 @@ import VueRouter from 'vue-router'
 import Home from '@/modules/Home/containers'
 
 // Posts
-import PostsArchive from "@posts/containers/Archive.vue"
+import PostsArchive from "@posts/containers/Archive"
 import PostSingle from "@posts/containers/Single"
 import Posts from '@posts/containers'
 
 // Videos
-import VideosArchive from "@videos/containers/Archive.vue"
+import VideosArchive from "@videos/containers/Archive"
 import VideoSingle from "@videos/containers/Single"
 import Videos from '@videos/containers'
 
 // Discussions
-import DiscussionsArchive from "@discussions/containers/Archive.vue"
+import DiscussionsArchive from "@discussions/containers/Archive"
 import Discussions from "@discussions/containers"
 
 Vue.use(VueRouter)

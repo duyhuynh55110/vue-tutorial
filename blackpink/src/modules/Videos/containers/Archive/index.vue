@@ -92,9 +92,9 @@
     </div>
 </template>
 <script>
-    import "@videos/styles"
+    import "./styles.scss"
 
-    import Title from "@/components/Title/Title"
+    import { Title } from "@/components"
     import { BreadCrumb } from "@layouts/components";
     import { Video } from "@videos/components"
 

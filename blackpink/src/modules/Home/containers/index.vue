@@ -34,7 +34,7 @@
 
 import BlogSideBar from "@layouts/components/BlogSideBar";
 import SlidersArea from "@posts/components/SlidersArea";
-import CategoriesArea from "@categories/components/CategoriesArea";
+import {CategoriesArea} from "@categories/components";
 import InstagramArea from "@instagram/components/Area";
 
 import Posts from "@posts/components/Posts";

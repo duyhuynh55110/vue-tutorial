@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import Category from "./Category";
+import { Category } from "@categories/components";
 
 export default {
   name: "CategoriesArea",

@@ -180,7 +180,7 @@
 import { BreadCrumb } from "@layouts/components";
 import BlogSideBar from "@layouts/components/BlogSideBar";
 import RelatedPostsArea from "@posts/components/RelatedPostsArea";
-import CommentsArea from "@comments/components/CommentsArea";
+import {CommentsArea} from "@comments/components";
 
 import moment from "moment";
 import { mapState } from "vuex";

@@ -47,8 +47,8 @@
 
 <script>
 import commentsService from "@comments/services/comments.service";
-import CommentForm from "./CommentForm";
-import Comments from "./Comments";
+import {CommentForm} from "@comments/components";
+import {Comments} from "@comments/components";
 
 export default {
   name: "CommentArea",

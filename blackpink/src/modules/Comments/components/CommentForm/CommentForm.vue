@@ -44,7 +44,7 @@
 </template>
 <script>
 import commentsService from "@comments/services/comments.service";
-import Loader from "@/components/Spinner/YummyLoader";
+import {YummyLoader as Loader } from "@/components";
 
 import {POLYMORPHISM_TYPES} from "@/common"
 

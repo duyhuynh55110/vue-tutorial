@@ -72,8 +72,8 @@
 </template>
 <script>
 import commentsService from "@comments/services/comments.service";
-import CommentForm from "./CommentForm";
-import Like from "@/components/Like/Like";
+import {CommentForm} from "@comments/components";
+import { Like } from "@/components";
 import moment from "moment";
 
 export default {
@@ -84,7 +84,7 @@ export default {
   components: {
     Like,
     CommentForm,
-    CommentsReply: () => import("./Comments"),
+    CommentsReply: () => import("../Comments/Comments"),
   },
   data() {
     return {

@@ -65,7 +65,7 @@
 </template>
 <script>
     import "@discussions/styles/Discussion.scss"
-    import Like from "@/components/Like/Like.vue"
+    import { Like } from "@/components"
 
     export default {
         name: "Discussion",

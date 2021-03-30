@@ -16,7 +16,7 @@
   </div>
 </template>
 <script>
-import Comment from "./Comment";
+import {Comment} from "@comments/components";
 
 export default {
   name: "comments",

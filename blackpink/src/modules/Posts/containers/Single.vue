@@ -178,7 +178,7 @@
 </template>
 <script>
 import { BreadCrumb } from "@layouts/components";
-import BlogSideBar from "@layouts/components/BlogSideBar";
+import {BlogSideBar} from "@layouts/components";
 import RelatedPostsArea from "@posts/components/RelatedPostsArea";
 import {CommentsArea} from "@comments/components";
 

@@ -37,7 +37,7 @@
 </template>
 <script>
     import { BreadCrumb } from "@layouts/components";
-    import Discussion from "@discussions/components/Discussion";
+    import { Discussion } from "@discussions/components";
 
     export default {
         name: "DiscussionsArchive",

@@ -64,7 +64,7 @@
     </div>
 </template>
 <script>
-    import "@discussions/styles/Discussion.scss"
+    import "./styles.scss"
     import { Like } from "@/components"
 
     export default {

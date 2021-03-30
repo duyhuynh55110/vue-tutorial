@@ -1,7 +1,7 @@
-import BlogSideBar from "@layouts/components/BlogSideBar"
-import BreadCrumb from "@layouts/components/BreadCrumb"
-import Footer from "@layouts/components/Footer"
-import Header from "@layouts/components/Header"
+import BlogSideBar from "@layouts/components/BlogSideBar/BlogSideBar"
+import BreadCrumb from "@layouts/components/BreadCrumb/BreadCrumb"
+import Footer from "@layouts/components/Footer/Footer"
+import Header from "@layouts/components/Header/Header"
 
 export {
     BlogSideBar,

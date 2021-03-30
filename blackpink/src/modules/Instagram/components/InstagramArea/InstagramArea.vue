@@ -11,19 +11,19 @@
                 768:{items:4},
                 992:{items:6}
             }">
-                <Item v-for="(item, index) in items" :key="index" :item="item"/>
+                <Instagram v-for="(item, index) in items" :key="index" :item="item"/>
         </carousel>
     </div>
 </template>
 <script>
     import carousel from "vue-owl-carousel"
-    import Item from "./Item"
+    import {Instagram} from "@instagram/components";
 
     export default {
         name: "InstagramArea",
         components: {
             carousel,
-            Item,
+            Instagram,
         },
         data () {
             return {

@@ -4,7 +4,6 @@
     </div>
 </template>
 <script>
-    import "../styles"
     export default {
         name: "DiscussionsMain",
     }

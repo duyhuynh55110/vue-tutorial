@@ -179,7 +179,7 @@
 <script>
 import { BreadCrumb } from "@layouts/components";
 import {BlogSideBar} from "@layouts/components";
-import RelatedPostsArea from "@posts/components/RelatedPostsArea";
+import {RelatedPostsArea} from "@posts/components";
 import {CommentsArea} from "@comments/components";
 
 import moment from "moment";

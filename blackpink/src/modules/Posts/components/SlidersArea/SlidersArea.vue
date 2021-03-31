@@ -19,7 +19,7 @@
 
 <script>
     import carousel from 'vue-owl-carousel'
-    import Slider from "./Slider"
+    import {Slider} from "@posts/components"
 
     export default {
         name: "SliderArea",

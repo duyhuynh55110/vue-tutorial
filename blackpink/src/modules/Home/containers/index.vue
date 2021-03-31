@@ -33,11 +33,11 @@
 // import postsService from "@posts/services/posts.service";
 
 import {BlogSideBar} from "@layouts/components";
-import SlidersArea from "@posts/components/SlidersArea";
+import {SlidersArea} from "@posts/components";
 import {CategoriesArea} from "@categories/components";
 import {InstagramArea} from "@instagram/components";
 
-import Posts from "@posts/components/Posts";
+import { Posts } from "@posts/components";
 import { mapState } from "vuex";
 
 export default {

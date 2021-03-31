@@ -6,7 +6,7 @@
   </div>
 </template>
 <script>
-import Post from "./Post";
+import {Post} from "@posts/components";
 export default {
   name: "Posts",
   props: {

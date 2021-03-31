@@ -22,7 +22,7 @@
 import postsService from "@posts/services/posts.service";
 
 import { BreadCrumb } from "@layouts/components";
-import Posts from "@posts/components/Posts";
+import {Posts} from "@posts/components";
 import {YummyLoader as Loader } from "@/components";
 
 import Utils from "@/utils";

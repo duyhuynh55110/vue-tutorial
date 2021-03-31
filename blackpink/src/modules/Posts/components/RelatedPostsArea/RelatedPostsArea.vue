@@ -24,7 +24,7 @@
     </div>
 </template>
 <script>
-    import Post from "./Post"
+    import {Post} from "@posts/components"
     import carousel from 'vue-owl-carousel'
     import {mapState} from "vuex"
 
